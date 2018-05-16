@@ -36,6 +36,8 @@ def report_data(dataframe, detailed=False):
     variable_type = {}
     unique_count = {}
     missing_observation = {}
+    # set ? to missing
+    dataframe = dataframe.replace('?',np.NaN)
     for col in dataframe.columns:
         # Type of each variable
         variable_type[col] = dataframe[col].dtypes
@@ -100,8 +102,8 @@ def visualize_data(df):
         if(df[col].dtype == np.float64 or df[col].dtype == np.int64):
             plt.figure()
             plt.title("{}".format(col))
-            df[col].plot(kind='hist')
-            #plt.hist(df[col].dropna())
+            df[col].hist()
+#             plt.hist(df[col].dropna())
         # plot bar charts for categorical data
         else:
             #df[col].plot('hist')
@@ -110,7 +112,8 @@ def visualize_data(df):
             plt.figure()
             plt.title("{}".format(col))
             plt.ylabel("Count")
-            df[col].value_counts(dropna=False).plot(kind='bar')
+            
+            df[col].value_counts(dropna=False).plot(kind='bar', color='C0', grid=True)
     plt.show()
 
 def convert_type(dataframe, col=None, type=None):
@@ -123,6 +126,7 @@ def convert_type(dataframe, col=None, type=None):
 def identify_missing_values(dataframe, detailed=False):
     missing_count = {}
     flag = False
+    dataframe = dataframe.replace('?',np.NaN)
     for col in dataframe.columns:
         # Missing count
         missing_count[col] = len(dataframe.index)-dataframe[col].count()
@@ -300,12 +304,65 @@ def diagnose_data(dataframe):
     print("")
     identify_missing_values(dataframe, detailed=True)
     
-df = get_data('tips.csv')
+# df = get_data('tips.csv')
 ##show_data(df, complete = False)
 ##report_data(df, detailed = True)
-##visualize_data(df)
+# visualize_data(df)
 ##diagnose_data(df)
 
+def convert_type(dataframe, col=None, type=None):
+    """
+    Converting data type of a specific variable
+    """
+    dataframe[col] = dataframe[col].astype(type)
+    return dataframe
 
+        
+def drop_missing_values(dataframe):
+    """
+    Drop rows containing missing values
+    """
+    dataframe_missing_dropped = dataframe.dropna()
+    return dataframe_missing_dropped
+
+def fill_missing_values(dataframe, fillingvalue = None, col = None):
+    """
+    Fill missing values NA/NaN with specific value
+    If no value is specified,
+    fill numeric type varible with mean();
+    fill category type varible with 'missing'
+    """
+    if fillingvalue != None:
+        if col != None:
+            dataframe[col] = dataframe[col].fillna(fillingvalue)
+        else:
+            dataframe = dataframe.fillna(fillingvalue)
+    else:
+        for col in dataframe.columns:
+            if(dataframe[col].dtype == np.float64 or dataframe[col].dtype == np.int64):
+                mean_value=dataframe[col].mean()
+                dataframe[col] = dataframe[col].fillna(mean_value)
+            else:
+                dataframe[col] = dataframe[col].fillna('missing')
+    print("")
+    print("Missing values filled")
+    #print(dataframe)
+    return dataframe            
+            
+def clean_duplicated_rows(dataframe):
+    """
+    Drop with duplicatd rows
+    """
+    # Drop the duplicates
+    dataframe_no_duplicate = dataframe.drop_duplicates()
+    #print(dataframe_no_duplicate)
+    return dataframe_no_duplicate
+
+def replace_values(dataframe, cols, original_value, new_value):
+    """
+    Replace a specific column value in a dataframe by a new value
+    """
+    dataframe[cols] = dataframe[cols].replace(original_value, new_value)
+    return dataframe
 
 
