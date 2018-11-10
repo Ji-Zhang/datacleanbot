@@ -1,0 +1,2 @@
+dataset	fold	min-inst-split	alpha	train-avg-ll	learning-time	eval-time	nodes	edges	layers	prod-nodes	sum-nodes	leaves	spn-json-path	lls-files
+data.mat	<_io.BufferedWriter name='./exp/temp/data.mat\\20181110-001639\\spn.model.pkl'>	500	-inf	0.009575597759294396	-inf	93	92	3	1	0	69
