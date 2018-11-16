@@ -457,7 +457,7 @@ def identify_missing_mechanism(df=None):
 #     print("")
 #     print("Missing correlation (Pearson correlation coefficient) between every 2 features")
 #     display(df.isnull().corr())
-    df2 = df.copy()
+    df2 = df.iloc[:, :-1].copy()
     missing_columns = df2.columns[df2.isnull().any(axis=0)] # columns containing missing values
     # relace nan as true, otherwise false for features containing missing values
     df2[df2.columns[df2.isnull().any(axis=0)]] = df2[df2.columns[df2.isnull().any(axis=0)]].isnull() 
@@ -696,6 +696,7 @@ def clean_missing(df,features):
     print("")
     display(HTML('<bold>Recommended Approach!</bold>'))
     print("The recommended approach is {}".format(recommend))
+    time.sleep(0.05)
     ans = input("Do you want to apply the recommended approach? [y/n]")
     print("")
     if ans == 'y':
@@ -1074,4 +1075,5 @@ def autoclean(openml_id):
     df_no_duplicate = clean_duplicated_rows(pd.DataFrame(Xy))
     features = unify_name_consistency(features)
     features_new, Xy_filled = handle_missing(features, df_no_duplicate)
-    handle_outlier(Xy_filled)
+    df_handled = handle_outlier(Xy_filled)
+    return df_handled
