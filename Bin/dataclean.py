@@ -457,15 +457,35 @@ def identify_missing_mechanism(df=None):
 #     print("")
 #     print("Missing correlation (Pearson correlation coefficient) between every 2 features")
 #     display(df.isnull().corr())
-    
-    tri_lower_no_diag = np.tril(df.isnull().corr(), k=-1)
-    # if any 2 features highly missing correlated
-    if (tri_lower_no_diag > 0.6).any() or (tri_lower_no_diag < -0.6).any():
-        display(HTML('<bold>Missing mechanism is highly possible to be missing at random</bold>'))
-    elif (tri_lower_no_diag > -0.2).all() and (tri_lower_no_diag < 0.2).all():
-        display(HTML('<bold>Missing mechanism is highly possible to be missing completely at random</bold>'))
+    df2 = df.copy()
+    missing_columns = df2.columns[df2.isnull().any(axis=0)] # columns containing missing values
+    # relace nan as true, otherwise false for features containing missing values
+    df2[df2.columns[df2.isnull().any(axis=0)]] = df2[df2.columns[df2.isnull().any(axis=0)]].isnull() 
+    df2[missing_columns] = df2[missing_columns].astype(int) # replace true as 1, false as 0
+    df_missing_corr = df2.corr()[missing_columns] # compute correlations between features containing missing values and other features
+    print("Missing correlation between features containing missing values and other features")
+    display(df_missing_corr)
+    flag_mar = False
+    # test if there is some correlation of a value being missed in feature and the value of any other of the features
+    for col in df_missing_corr:
+        list_high_corr =[]
+        list_high_corr = list_high_corr + (df_missing_corr[col].index[df_missing_corr[col]>0.6].tolist())
+        list_high_corr.remove(int(col))
+#         print(list_high_corr)
+        if list_high_corr:
+            flag_mar = True
+    if flag_mar:
+        display(HTML('<bold>Missing mechanism is probably missing at random</bold>'))
     else:
-        display(HTML('<bold>Missing mechanism is hard to guess</bold>'))
+        display(HTML('<bold>Missing mechanism is probably missing completely at random</bold>'))
+#     tri_lower_no_diag = np.tril(df.isnull().corr(), k=-1)
+#     # if any 2 features highly missing correlated
+#     if (tri_lower_no_diag > 0.6).any() or (tri_lower_no_diag < -0.6).any():
+#         display(HTML('<bold>Missing mechanism is highly possible to be missing at random</bold>'))
+#     elif (tri_lower_no_diag > -0.2).all() and (tri_lower_no_diag < 0.2).all():
+#         display(HTML('<bold>Missing mechanism is highly possible to be missing completely at random</bold>'))
+#     else:
+#         display(HTML('<bold>Missing mechanism is hard to guess</bold>'))
 
 def visualize_missing(df=None):
     """
