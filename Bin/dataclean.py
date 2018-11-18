@@ -764,6 +764,8 @@ def handle_missing(features, df):
     
     display(HTML('<h2>Missing values</h2>'))
     flag = identify_missing(df)
+    features_new = features
+    Xy_filled = np.asarray(df)
     if flag:
         features_new, Xy_filled = clean_missing(features, df)
     return features_new, Xy_filled
@@ -1022,15 +1024,15 @@ def visualize_outliers_scatter(df, df_pred):
     plt.show()
 
 def visualize_outliers_parallel_coordinates(df_scaled, df_pred):
-    from pandas.plotting import parallel_coordinates
     df_final = pd.concat([df_scaled, df_pred], axis=1)
+    df_final[df_final.columns[-1]] = df_final[df_final.columns[-1]].map({1:'Normal', -1:'Anomaly'})
 #     print(df_final.head())
     fig = plt.figure(figsize=(6, 4))
     title = fig.suptitle("Parallel Coordinates", fontsize=18)
     fig.subplots_adjust(top=0.93, wspace=0)
-    pc = parallel_coordinates(df_final, 'pred', color=('skyblue', 'firebrick'), sort_labels=True)
+    pc = parallel_coordinates(df_final, df_final.columns[-1], color=('skyblue', 'firebrick'), sort_labels=True)
     pc.set_xticklabels(pc.get_xticklabels(), rotation=40, ha="right")
-    _=plt.legend(['Normal', 'Anomaly'])
+
     plt.show()
 
 def drop_outliers(df, df_outliers):
