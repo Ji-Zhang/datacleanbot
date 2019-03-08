@@ -7,3 +7,6 @@ Three aspects are meaningfully automated:
     Automatic Discovery of Data Types
     Automatic Missing Value Handling
     Automatic Outlier Detection
+
+The user's guide can be found at [DataClean](https://automatic-data-cleaning.readthedocs.io/en/latest/index.html).
+
