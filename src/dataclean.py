@@ -1296,7 +1296,7 @@ def handle_outlier(features, Xy):
 
 ##### Main #####
 def autoclean(Xy, dataset_name, features):
-    """Auto-cleans the OpenML dataset given the dataset id.
+    """Auto-cleans data.
 
     The following aspects are automatically cleaned:
     show important features;

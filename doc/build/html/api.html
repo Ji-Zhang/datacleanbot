@@ -191,7 +191,7 @@
 <p>A data cleaning Python tool.</p>
 <dl class="function">
 <dt id="dataclean.autoclean">
-<code class="descclassname">dataclean.</code><code class="descname">autoclean</code><span class="sig-paren">(</span><em>openml_id</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.autoclean" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dataclean.</code><code class="descname">autoclean</code><span class="sig-paren">(</span><em>Xy</em>, <em>dataset_name</em>, <em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.autoclean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Auto-cleans the OpenML dataset given the dataset id.</p>
 <p>The following aspects are automatically cleaned:
 show important features;
@@ -205,12 +205,20 @@ handle outliers.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>openml_id</strong> : int</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : array-like</p>
+<blockquote>
+<div><p>Complete data.</p>
+</div></blockquote>
+<p><strong>dataset_name</strong> : string</p>
+<p><strong>features</strong> : list</p>
+<blockquote>
+<div><p>List of feature names.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>df_handled</strong> : DataFrame</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Xy_cleaned</strong> : array-like</p>
 <blockquote class="last">
-<div><p>Cleaned data formatted in DataFrame.</p>
+<div><p>Cleaned data.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -254,22 +262,26 @@ in regression).</p>
 
 <dl class="function">
 <dt id="dataclean.clean_duplicated_rows">
-<code class="descclassname">dataclean.</code><code class="descname">clean_duplicated_rows</code><span class="sig-paren">(</span><em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.clean_duplicated_rows" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dataclean.</code><code class="descname">clean_duplicated_rows</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.clean_duplicated_rows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clean duplicated rows.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dataframe</strong> : DataFrame</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : array-like</p>
 <blockquote>
-<div><p>Original data converted to DataFrame with Pandas.</p>
+<div><p>Complete numpy array (target required) of the dataset.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dataframe</strong> : DataFrame</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Xy</strong> : array-like</p>
+<blockquote>
+<div><p>Original data.</p>
+</div></blockquote>
+<p><strong>Xy_no_duplicate</strong> : array-like</p>
 <blockquote class="last">
-<div><p>Cleaned DataFrame with or without duplicated rows depending 
-on whehter user wants to drop the duplicated rows.</p>
+<div><p>Cleaned data without duplicated rows if user wants to 
+drop the duplicated rows.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -470,16 +482,16 @@ to the .mat format.</p>
 
 <dl class="function">
 <dt id="dataclean.handle_missing">
-<code class="descclassname">dataclean.</code><code class="descname">handle_missing</code><span class="sig-paren">(</span><em>features</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.handle_missing" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dataclean.</code><code class="descname">handle_missing</code><span class="sig-paren">(</span><em>features</em>, <em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.handle_missing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Handle missing values.</p>
 <p>Recommend the approprate approach to the user given the missing mechanism 
 of the dataset. The user can choose to adopt the recommended approach or take
-another available approach.
-For MCAR, the following methods are evaluated: ‘list deletion’, ‘mean’,
-‘mode’, ‘k nearest neighbors’, ‘matrix factorization’, ‘multiple imputation’.
-For MAR, the following methods are evaluated: ‘k nearest neighbors’, 
-‘matrix factorization’, ‘multiple imputation’.
-For MNAR, ‘multiple imputation’ is adopted.</p>
+another available approach.</p>
+<p>For MCAR, the following methods are evaluated: ‘list deletion’, ‘mean’,
+‘mode’, ‘k nearest neighbors’, ‘matrix factorization’, ‘multiple imputation’.</p>
+<p>For MAR, the following methods are evaluated: ‘k nearest neighbors’, 
+‘matrix factorization’, ‘multiple imputation’.</p>
+<p>For MNAR, ‘multiple imputation’ is adopted.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -488,9 +500,9 @@ For MNAR, ‘multiple imputation’ is adopted.</p>
 <blockquote>
 <div><p>List of feature names.</p>
 </div></blockquote>
-<p><strong>df</strong> : DataFrame</p>
+<p><strong>Xy</strong> : array-like</p>
 <blockquote>
-<div><p>Data formatted as DataFrame.</p>
+<div><p>Complete numpy array (target required and not optional).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -510,7 +522,7 @@ For MNAR, ‘multiple imputation’ is adopted.</p>
 
 <dl class="function">
 <dt id="dataclean.handle_outlier">
-<code class="descclassname">dataclean.</code><code class="descname">handle_outlier</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.handle_outlier" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dataclean.</code><code class="descname">handle_outlier</code><span class="sig-paren">(</span><em>features</em>, <em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.handle_outlier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cleans the outliers.</p>
 <p>Recommends the algorithm to the user to detect the outliers and
 presents the outliers to the user in effective visualizations.
@@ -519,15 +531,23 @@ The user can decides whether or not to keep the outliers.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : array-like</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>features</strong> : list</p>
+<blockquote>
+<div><p>List of feature names.</p>
+</div></blockquote>
+<p><strong>Xy</strong> : array-like</p>
 <blockquote>
 <div><p>Numpy array. Both training vectors and target are required.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>df</strong> : DataFrame</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Xy_no_outliers</strong> : array-like</p>
+<blockquote>
+<div><p>Cleaned data where outliers are dropped.</p>
+</div></blockquote>
+<p><strong>Xy</strong> : array-like</p>
 <blockquote class="last">
-<div><p>Cleaned data formatted in DataFrame.</p>
+<div><p>Original data where outliers are not found or kept.</p>
 </div></blockquote>
 </td>
 </tr>
