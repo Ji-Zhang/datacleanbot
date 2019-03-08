@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; dataclean 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Example_tasks" href="Example_tasks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dataclean
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dataclean</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-dataclean">
+<span id="api"></span><h1>API<a class="headerlink" href="#module-dataclean" title="Permalink to this headline">¶</a></h1>
+<p>A data cleaning Python tool.</p>
+<dl class="function">
+<dt id="dataclean.autoclean">
+<code class="descclassname">dataclean.</code><code class="descname">autoclean</code><span class="sig-paren">(</span><em>openml_id</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.autoclean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Auto-cleans the OpenML dataset given the dataset id.</p>
+<p>The following aspects are automatically cleaned:
+show important features;
+show statistical information;    
+discover the data type for each feature;
+identify the duplicated rowsl;
+unify the inconsistent column names;
+handle missing values;
+handle outliers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>openml_id</strong> : int</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>df_handled</strong> : DataFrame</p>
+<blockquote class="last">
+<div><p>Cleaned data formatted in DataFrame.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.build_forest">
+<code class="descclassname">dataclean.</code><code class="descname">build_forest</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.build_forest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build random forest model from the dataset and compute important features</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape (n_samples, n_features)</p>
+<blockquote>
+<div><p>Training vectors, where n_samples is the number of samples 
+and n_features is the number of features.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape (n_samples,)</p>
+<blockquote>
+<div><p>Target values (class labels in classification, real numbers 
+in regression).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>importances</strong> : array, shape = [n_features]</p>
+<blockquote>
+<div><p>The feature importances (the higher, the more important the feature).</p>
+</div></blockquote>
+<p><strong>indices</strong> : array, shape = [n_features]</p>
+<blockquote class="last">
+<div><p>Reverse the importances.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.clean_duplicated_rows">
+<code class="descclassname">dataclean.</code><code class="descname">clean_duplicated_rows</code><span class="sig-paren">(</span><em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.clean_duplicated_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean duplicated rows.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dataframe</strong> : DataFrame</p>
+<blockquote>
+<div><p>Original data converted to DataFrame with Pandas.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dataframe</strong> : DataFrame</p>
+<blockquote class="last">
+<div><p>Cleaned DataFrame with or without duplicated rows depending 
+on whehter user wants to drop the duplicated rows.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.clean_missing">
+<code class="descclassname">dataclean.</code><code class="descname">clean_missing</code><span class="sig-paren">(</span><em>df</em>, <em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.clean_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clean missing values in the dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>df</strong> : DataFrame</p>
+<p><strong>features</strong> : List</p>
+<blockquote>
+<div><p>List of feature names.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>features_new</strong> : List</p>
+<blockquote>
+<div><p>List of feature names after cleaning.</p>
+</div></blockquote>
+<p><strong>Xy_filled</strong> : array-like</p>
+<blockquote class="last">
+<div><p>Numpy array where missing values have been cleaned.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.compute_clustering_metafeatures">
+<code class="descclassname">dataclean.</code><code class="descname">compute_clustering_metafeatures</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.compute_clustering_metafeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes clustering meta features.</p>
+<p>The following 3 clustering meta features are adopted:
+Silhouette Coefficient;
+Calinski_Harabaz Index;
+Davies_Bouldin Index.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.compute_imputation_score">
+<code class="descclassname">dataclean.</code><code class="descname">compute_imputation_score</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.compute_imputation_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes score of the imputation by applying simple classifiers.</p>
+<p>The following simple learners are evaluated:
+Naive Bayes Learner;
+Linear Discriminant Learner;
+One Nearest Neighbor Learner;
+Decision Node Learner.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : array-like</p>
+<blockquote>
+<div><p>Complete numpy array of the dataset. The training array X has to be imputed
+already, and the target y is required here and not optional in order to 
+predict the performance of the imputation method.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>imputation_score</strong> : float</p>
+<blockquote class="last">
+<div><p>Predicted score of the imputation method.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.compute_metafeatures">
+<code class="descclassname">dataclean.</code><code class="descname">compute_metafeatures</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.compute_metafeatures" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes landmarking meta features.</p>
+<p>The following landmarking features are computed:
+Naive Bayes Learner;
+Linear Discriminant Learner;
+One Nearest Neighbor Learner;
+Decision Node Learner;
+Randomly Chosen Node Learner.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.deal_mar">
+<code class="descclassname">dataclean.</code><code class="descname">deal_mar</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.deal_mar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deal with missing data with missing at random pattern.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.deal_mcar">
+<code class="descclassname">dataclean.</code><code class="descname">deal_mcar</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.deal_mcar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deal with missing data with missing completely at random pattern.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.deal_mnar">
+<code class="descclassname">dataclean.</code><code class="descname">deal_mnar</code><span class="sig-paren">(</span><em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.deal_mnar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deal with missing data with missing at random pattern.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.discover_type_bayesian">
+<code class="descclassname">dataclean.</code><code class="descname">discover_type_bayesian</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.discover_type_bayesian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer data types for each feature using Bayesian model.</p>
+<p>Retrieve the key with the higher value from ‘weights’ of the output of
+the Bayesian model. The retrieved key is the statisical type of the 
+corresponding feature.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : numpy array</p>
+<blockquote>
+<div><p>Xy can only be numeric in order to run the Bayesian model.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : list</p>
+<blockquote class="last">
+<div><p>List of data types.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.discover_type_heuristic">
+<code class="descclassname">dataclean.</code><code class="descname">discover_type_heuristic</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.discover_type_heuristic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer data types for each feature using simple logic</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : numpy array or dataframe</p>
+<blockquote>
+<div><p>Numeric data needs to be 64 bit.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : list</p>
+<blockquote class="last">
+<div><p>List of data types.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.discover_types">
+<code class="descclassname">dataclean.</code><code class="descname">discover_types</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.discover_types" title="Permalink to this definition">¶</a></dt>
+<dd><p>Discover types for numpy array.</p>
+<p>Both simple logic rules and Bayesian methods are applied.
+Bayesian methods can only be applied if Xy are numeric.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : numpy array</p>
+<blockquote class="last">
+<div><p>Xy can only be numeric in order to run the Bayesian model.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.drop_duplicated_rows">
+<code class="descclassname">dataclean.</code><code class="descname">drop_duplicated_rows</code><span class="sig-paren">(</span><em>dataframe</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.drop_duplicated_rows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drop duplicatd rows.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.drop_outliers">
+<code class="descclassname">dataclean.</code><code class="descname">drop_outliers</code><span class="sig-paren">(</span><em>df</em>, <em>df_outliers</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.drop_outliers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops the detected outliers.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.generate_mat">
+<code class="descclassname">dataclean.</code><code class="descname">generate_mat</code><span class="sig-paren">(</span><em>Xy</em>, <em>extra_cardinality=1</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.generate_mat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert data to mat format.</p>
+<p>In order to use the Bayesian model, data need to be converted
+to the .mat format.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.handle_missing">
+<code class="descclassname">dataclean.</code><code class="descname">handle_missing</code><span class="sig-paren">(</span><em>features</em>, <em>df</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.handle_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle missing values.</p>
+<p>Recommend the approprate approach to the user given the missing mechanism 
+of the dataset. The user can choose to adopt the recommended approach or take
+another available approach.
+For MCAR, the following methods are evaluated: ‘list deletion’, ‘mean’,
+‘mode’, ‘k nearest neighbors’, ‘matrix factorization’, ‘multiple imputation’.
+For MAR, the following methods are evaluated: ‘k nearest neighbors’, 
+‘matrix factorization’, ‘multiple imputation’.
+For MNAR, ‘multiple imputation’ is adopted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>features</strong> : list</p>
+<blockquote>
+<div><p>List of feature names.</p>
+</div></blockquote>
+<p><strong>df</strong> : DataFrame</p>
+<blockquote>
+<div><p>Data formatted as DataFrame.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>features_new</strong> : List</p>
+<blockquote>
+<div><p>List of feature names after cleaning.</p>
+</div></blockquote>
+<p><strong>Xy_filled</strong> : array-like</p>
+<blockquote class="last">
+<div><p>Numpy array where missing values have been cleaned.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.handle_outlier">
+<code class="descclassname">dataclean.</code><code class="descname">handle_outlier</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.handle_outlier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cleans the outliers.</p>
+<p>Recommends the algorithm to the user to detect the outliers and
+presents the outliers to the user in effective visualizations.
+The user can decides whether or not to keep the outliers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>Xy</strong> : array-like</p>
+<blockquote>
+<div><p>Numpy array. Both training vectors and target are required.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>df</strong> : DataFrame</p>
+<blockquote class="last">
+<div><p>Cleaned data formatted in DataFrame.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.highlight_outlier">
+<code class="descclassname">dataclean.</code><code class="descname">highlight_outlier</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.highlight_outlier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Highlight the maximum in a Series yellow.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.identify_missing">
+<code class="descclassname">dataclean.</code><code class="descname">identify_missing</code><span class="sig-paren">(</span><em>df=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.identify_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Detect missing values.</p>
+<p>Identify the common missing characters such as ‘n/a’, ‘na’, ‘–’
+and ‘?’ as missing. User can also customize the characters to be
+identified as missing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>df</strong> : DataFrame</p>
+<blockquote>
+<div><p>Raw data formatted in DataFrame.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>flag</strong> : bool</p>
+<blockquote class="last">
+<div><p>Indicates whether missing values are detected.
+If true, missing values are detected. Otherwise not.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.identify_missing_mechanism">
+<code class="descclassname">dataclean.</code><code class="descname">identify_missing_mechanism</code><span class="sig-paren">(</span><em>df=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.identify_missing_mechanism" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to guess the missing mechanism of the dataset.</p>
+<p>Missing mechanism is not really testable. There may be reasons to 
+suspect that the dataset belongs to one missing mechanism based on
+the missing correlation between features, but the result is not 
+definite. Relevant information are provided to help the user make
+the decision.
+Three missng mechanisms to be guessed: 
+MCAR: Missing completely at ramdom
+MAR: Missing at random
+MNAR: Missing not at random (not available here, normally involes field expert)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>df</strong> : DataFrame</p>
+<blockquote class="last">
+<div><p>Raw data formatted in DataFrame.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.identify_outliers">
+<code class="descclassname">dataclean.</code><code class="descname">identify_outliers</code><span class="sig-paren">(</span><em>df</em>, <em>algorithm=0</em>, <em>detailed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.identify_outliers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Identifies outliers in multi dimension.</p>
+<p>Dataset has to be parsed as numeric beforehand.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.infer_feature_type">
+<code class="descclassname">dataclean.</code><code class="descname">infer_feature_type</code><span class="sig-paren">(</span><em>feature</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.infer_feature_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Infer data types for the given feature using simple logic.</p>
+<p>Possible data types to infer: boolean, date, float, integer, string
+Feature that is not either a boolean, a date, a float or an integer, 
+is classified as a string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>feature</strong> : array-like</p>
+<blockquote>
+<div><p>A feature/attribute vector.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data_type</strong> : string</p>
+<blockquote class="last">
+<div><p>The data type of the given feature/attribute.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.missing_preprocess">
+<code class="descclassname">dataclean.</code><code class="descname">missing_preprocess</code><span class="sig-paren">(</span><em>features</em>, <em>df=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.missing_preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops the redundant information.</p>
+<p>Redundant information is dropped before imputation. Detects and 
+drops empty rows. Detects features and instances with extreme large 
+proportion of missing data and reports to the user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>features</strong> : list</p>
+<blockquote>
+<div><p>List of feature names.</p>
+</div></blockquote>
+<p><strong>df</strong> : DataFrame</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>df</strong> : DataFrame</p>
+<blockquote>
+<div><p>New DataFrame where redundant information may have been deleted.</p>
+</div></blockquote>
+<p>features_new: list</p>
+<blockquote class="last">
+<div><p>List of feature names after preprocessing.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.plot_feature_importances">
+<code class="descclassname">dataclean.</code><code class="descname">plot_feature_importances</code><span class="sig-paren">(</span><em>dataset_name</em>, <em>features</em>, <em>importances</em>, <em>indices</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.plot_feature_importances" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the 15 most important features.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.predict_best_anomaly_algorithm">
+<code class="descclassname">dataclean.</code><code class="descname">predict_best_anomaly_algorithm</code><span class="sig-paren">(</span><em>X</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.predict_best_anomaly_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Predicts best anomaly detection algorithm.</p>
+<p>Recommends the best anomaly detection algorithm to the user given the 
+characteristics of the dataset.
+The following algorithms are considered:
+0: isolation forest;
+1: local outlier factor;
+2: one class support vector machine.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.show_important_features">
+<code class="descclassname">dataclean.</code><code class="descname">show_important_features</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>data_name</em>, <em>features</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.show_important_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show the most important features of the given dataset.</p>
+<p>Computes the most important features of the given dataset
+using random forest, and present the 15 most useful features
+to the user with a bar chart.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape (n_samples, n_features)</p>
+<blockquote>
+<div><p>Training vectors, where n_samples is the number of samples 
+and n_features is the number of features.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape (n_samples,)</p>
+<blockquote>
+<div><p>Target values (class labels in classification, real numbers 
+in regression).</p>
+</div></blockquote>
+<p><strong>data_name</strong> : string</p>
+<blockquote>
+<div><p>Dataset name.</p>
+</div></blockquote>
+<p><strong>features</strong> : list</p>
+<blockquote class="last">
+<div><p>List of feature names.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.show_statistical_info">
+<code class="descclassname">dataclean.</code><code class="descname">show_statistical_info</code><span class="sig-paren">(</span><em>Xy</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.show_statistical_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show statistical information of the given dataset</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Xy</strong> : array-like</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.unify_name_consistency">
+<code class="descclassname">dataclean.</code><code class="descname">unify_name_consistency</code><span class="sig-paren">(</span><em>names</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.unify_name_consistency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unify inconsistent column names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>names</strong> : list</p>
+<blockquote>
+<div><p>List of original column names.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>names</strong> : list</p>
+<blockquote class="last">
+<div><p>Unified column names.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.visualize_missing">
+<code class="descclassname">dataclean.</code><code class="descname">visualize_missing</code><span class="sig-paren">(</span><em>df=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.visualize_missing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualize missing values.</p>
+<p>The missingness of the dataset is visualized in bar chart,
+matrix and heatmap.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.visualize_outliers_parallel_coordinates">
+<code class="descclassname">dataclean.</code><code class="descname">visualize_outliers_parallel_coordinates</code><span class="sig-paren">(</span><em>df_scaled</em>, <em>df_pred</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.visualize_outliers_parallel_coordinates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes high-dimensional outliers with a parallel coordinates plot.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dataclean.visualize_outliers_scatter">
+<code class="descclassname">dataclean.</code><code class="descname">visualize_outliers_scatter</code><span class="sig-paren">(</span><em>df</em>, <em>df_pred</em><span class="sig-paren">)</span><a class="headerlink" href="#dataclean.visualize_outliers_scatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Visualizes high-dimensional outliers with a scatter plot.</p>
+<p>Selects out the two features most likely to have outliers and 
+shows them in a scatter plot.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Example_tasks.html" class="btn btn-neutral float-left" title="Example_tasks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ji Zhang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

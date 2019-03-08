@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Usage &mdash; dataclean 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'1.0',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example" href="example.html" />
+    <link rel="prev" title="DataClean" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dataclean
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acquire-data">Acquire Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#show-impotant-features">Show Impotant Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unify-column-names">Unify Column Names</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#show-statistical-inforamtion">Show Statistical Inforamtion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#discover-data-types">Discover Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clean-duplicated-rows">Clean Duplicated Rows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handle-missing-values">Handle Missing Values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outlier-detection">Outlier Detection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dataclean</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast,
+.nboutput.nblast {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast + .nbinput {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="acquire-data">
+<h2>Acquire Data<a class="headerlink" href="#acquire-data" title="Permalink to this headline">¶</a></h2>
+<p>The first step is to acquire data from <a class="reference external" href="https://www.openml.org/">OpenML</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openml</span> <span class="kn">as</span> <span class="nn">oml</span>
+<span class="kn">import</span> <span class="nn">dataclean</span> <span class="kn">as</span> <span class="nn">dc</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">oml</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1"># id: openml dataset id</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">default_target_attribute</span><span class="p">,</span> <span class="n">return_attribute_names</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">Xy</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-impotant-features">
+<h2>Show Impotant Features<a class="headerlink" href="#show-impotant-features" title="Permalink to this headline">¶</a></h2>
+<p>DataClean computes the most important features of
+the given dataset using random forest and present the
+15 most useful features to the user.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">show_important_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unify-column-names">
+<h2>Unify Column Names<a class="headerlink" href="#unify-column-names" title="Permalink to this headline">¶</a></h2>
+<p>Inconsistent capitalization of column names can be detected and
+reported to the user. Users can decide whether to unify them or
+not. The capitalization can be unified to either upper case or
+lower case.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">unify_name_consistency</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="show-statistical-inforamtion">
+<h2>Show Statistical Inforamtion<a class="headerlink" href="#show-statistical-inforamtion" title="Permalink to this headline">¶</a></h2>
+<p>DataClean can present the statistical information to
+help users gain a better understanding of the data
+distribution.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">show_statistical_info</span><span class="p">(</span><span class="n">Xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="discover-data-types">
+<h2>Discover Data Types<a class="headerlink" href="#discover-data-types" title="Permalink to this headline">¶</a></h2>
+<p>DataClean can discover feature data types.
+Basic data types discovered are ‘datetime’, ‘float’, ‘integer’,
+‘bool’ and ‘string’.
+DataClean also can discover statistical data types (real, positive real,
+categorical and count) using <a class="reference external" href="https://arxiv.org/abs/1807.09306/">Bayesian Model abda</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">discover_types</span><span class="p">(</span><span class="n">Xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="clean-duplicated-rows">
+<h2>Clean Duplicated Rows<a class="headerlink" href="#clean-duplicated-rows" title="Permalink to this headline">¶</a></h2>
+<p>DataClean detects the duplicated records and reports them to users.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">clean_duplicated_rows</span><span class="p">(</span><span class="n">Xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="handle-missing-values">
+<h2>Handle Missing Values<a class="headerlink" href="#handle-missing-values" title="Permalink to this headline">¶</a></h2>
+<p>DataClean identifies characters ‘n/a’, ‘na’, ‘–’ and ‘?’ as missing values.
+Users can add extra characters to be considered as missing. After the missing
+values being detected, DataClean will present the missing values in effective
+visualizations to help users identify the missing mechanism. Afterwards, DataClean
+recommends the appropriate approach to clean missing values according the missing
+mechanism.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">features</span><span class="p">,</span> <span class="n">Xy</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">handle_missing</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">Xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="outlier-detection">
+<h2>Outlier Detection<a class="headerlink" href="#outlier-detection" title="Permalink to this headline">¶</a></h2>
+<p>A meta-learner is trained beforehand to recommend the outlier detection algorithm
+according to the meta features og the given dataset. Users can apply the
+recommended algorithm or any other available algorithm to detect outliers.
+After the detection, outliers will be present to users in effective visualizations
+and users can choose to drop them or not.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Xy</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">handle_outlier</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">Xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="example.html" class="btn btn-neutral float-right" title="Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="DataClean" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ji Zhang
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
