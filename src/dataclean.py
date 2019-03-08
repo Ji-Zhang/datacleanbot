@@ -385,26 +385,30 @@ def discover_types(Xy):
 ################################
 
 ##### Duplicated Rows ######
-def clean_duplicated_rows(dataframe):
+def clean_duplicated_rows(Xy):
     """Clean duplicated rows.
 
     Parameters
     ----------
 
-    dataframe : DataFrame
-        Original data converted to DataFrame with Pandas.
+    Xy : array-like
+        Complete numpy array (target required) of the dataset.
 
     Returns
     -------
 
-    dataframe : DataFrame
-        Cleaned DataFrame with or without duplicated rows depending 
-        on whehter user wants to drop the duplicated rows.
+    Xy : array-like
+        Original data.
+
+    Xy_no_duplicate : array-like
+        Cleaned data without duplicated rows if user wants to 
+        drop the duplicated rows.
     """
     display(HTML('<h2>Duplicated Rows</h2>'))
     
     print("Identifying Duplicated Rows ...")
     
+    dataframe = pd.DataFrame(Xy)
     # Mark duplicated rows with True
     mark = dataframe.duplicated(keep=False)
     #print(mark)
@@ -426,20 +430,21 @@ def clean_duplicated_rows(dataframe):
         ans = input('Do you want to drop the duplicated rows? [y/n]')
         if ans == 'y':
             dataframe_no_duplicate = drop_duplicated_rows(dataframe)
+            Xy_no_duplicate = dataframe_no_duplicate.values
             print("")
             print("Duplicated rows are dropped.")
             print("")
-            return dataframe_no_duplicate
+            return Xy_no_duplicate
         else:
             print("")
             print("Duplicated rows are kept.")
             print("")
-            return dataframe
+            return Xy
     else:
         print("")
         display(HTML('<bold>No duplicated rows detected.</bold>'))
         print("")
-        return dataframe
+        return Xy
 
 def drop_duplicated_rows(dataframe):
     """Drop duplicatd rows."""
@@ -907,16 +912,19 @@ def clean_missing(df,features):
         print("Missing values cleaned!")
     return features_new, Xy_filled
 
-def handle_missing(features, df):
+def handle_missing(features, Xy):
     """Handle missing values.
 
     Recommend the approprate approach to the user given the missing mechanism 
     of the dataset. The user can choose to adopt the recommended approach or take
     another available approach.
+    
     For MCAR, the following methods are evaluated: 'list deletion', 'mean',
     'mode', 'k nearest neighbors', 'matrix factorization', 'multiple imputation'.
+
     For MAR, the following methods are evaluated: 'k nearest neighbors', 
     'matrix factorization', 'multiple imputation'.
+
     For MNAR, 'multiple imputation' is adopted.
 
     Parameters
@@ -925,8 +933,8 @@ def handle_missing(features, df):
     features : list
         List of feature names.
 
-    df : DataFrame
-        Data formatted as DataFrame.
+    Xy : array-like
+        Complete numpy array (target required and not optional).
 
     Returns
     -------
@@ -939,6 +947,8 @@ def handle_missing(features, df):
     """
     
     display(HTML('<h2>Missing values</h2>'))
+
+    df = pd.DataFrame(Xy)
     flag = identify_missing(df)
     features_new = features
     Xy_filled = np.asarray(df)
@@ -1127,7 +1137,7 @@ def identify_outliers(df,algorithm=0, detailed=False):
 #     plt.show()
     contamination = max_outliers / total_length
     X = np.asarray(df_numeric)
-    # to be extended later, for now isolation forest
+
     if algorithm == 2:
         clf = svm.OneClassSVM(nu=0.95 * contamination + 0.05)
         clf.fit(X)
@@ -1229,7 +1239,7 @@ def drop_outliers(df, df_outliers):
     df_no_outliers = df.drop(df_outliers.index.values)
     return df_no_outliers
 
-def handle_outlier(Xy):
+def handle_outlier(features, Xy):
     """Cleans the outliers.
 
     Recommends the algorithm to the user to detect the outliers and
@@ -1238,6 +1248,8 @@ def handle_outlier(Xy):
 
     Parameters
     ----------
+    features : list
+        List of feature names.
 
     Xy : array-like
         Numpy array. Both training vectors and target are required.
@@ -1245,11 +1257,19 @@ def handle_outlier(Xy):
     Returns
     -------
 
-    df : DataFrame
-        Cleaned data formatted in DataFrame.
+    Xy_no_outliers : array-like
+        Cleaned data where outliers are dropped.
+
+    Xy : array-like
+        Original data where outliers are not found or kept.
     """
     display(HTML('<h2>Outliers</h2>'))
     display(HTML('<h4>Recommend Algorithm ... </h4>'))
+    
+    if np.isnan(Xy).any():
+        print("Missing values detected! Please clean missing values first!")
+        features, Xy = handle_missing(features, Xy)
+        
     X = Xy[:,:-1]
     y = Xy[:,-1]
     best = predict_best_anomaly_algorithm(X, y)
@@ -1267,15 +1287,16 @@ def handle_outlier(Xy):
     if ans == 'y':
         print("Outliers are dropped.")
         df_no_outliers = drop_outliers(df, df_outliers)
-        return df_no_outliers
+        Xy_no_outliers = df_no_outliers.values
+        return Xy_no_outliers
     else:
         print("Outliers are kept.")
-        return df
+        return Xy
 
 ####################
 
 ##### Main #####
-def autoclean(openml_id):
+def autoclean(Xy, dataset_name, features):
     """Auto-cleans the OpenML dataset given the dataset id.
 
     The following aspects are automatically cleaned:
@@ -1289,21 +1310,26 @@ def autoclean(openml_id):
 
     Parameters
     ----------
-    openml_id : int 
+    Xy : array-like
+        Complete data.
+
+    dataset_name : string
+
+    features : list
+        List of feature names.
 
     Returns
     -------
-    df_handled : DataFrame
-        Cleaned data formatted in DataFrame. 
+    Xy_cleaned : array-like
+        Cleaned data. 
     """
-    data = oml.datasets.get_dataset(openml_id)
-    X, y, features = data.get_data(target=data.default_target_attribute, return_attribute_names=True)
-    Xy = data.get_data()
-    show_important_features(X, y, data.name, features)
+    X = Xy[:,:-1]
+    y = Xy[:,-1]
+    show_important_features(X, y, dataset_name, features)
     show_statistical_info(Xy)
     discover_types(Xy)
-    df_no_duplicate = clean_duplicated_rows(pd.DataFrame(Xy))
+    Xy = clean_duplicated_rows(Xy)
     features = unify_name_consistency(features)
-    features_new, Xy_filled = handle_missing(features, df_no_duplicate)
-    df_handled = handle_outlier(Xy_filled)
-    return df_handled
+    features_new, Xy_filled = handle_missing(features, Xy)
+    Xy_cleaned = handle_outlier(features_new, Xy_filled)
+    return Xy_cleaned
