@@ -1,0 +1,56 @@
+---
+title: 'DataClean: automated, data-driven tool to help users clean data effectively'
+tags:
+  - data clean
+  - Python
+  - machine learning
+  - data type discovery
+  - missing value detection
+  - outlier detection
+authors:
+  - name: Ji Zhang
+    orcid: ?????
+    affiliation: 1
+affiliations:
+ - name: ?????
+   index: 1
+date: 12 March 2019
+bibliography: paper.bib
+---
+
+# Summary
+
+Data in real life almost never come in a clean way and poor data quality may severely affect the effectiveness of learning algorithms [@Sessions_theeffects]. Consequently, raw data need to be cleaned before being able to proceed with training or running machine learning models.
+
+``DataClean`` is a Python package which can offer automated, data-driven support to help users clean data effectively and smoothly. Given a random parsed raw dataset representing a supervised learning problem, ``DataClean`` is capable of automatically identifying the potential issues and reporting the results and recommendations to the end-user in an effective way. To be noticed, ``DataClean`` is aimed for supervised learning tasks and data need to be parsed as numeric format beforehand.
+
+``DataClean`` is equipped with the following capabilities:
+* Present an overview report of the given dataset
+    * The most important features
+    * Statistical information (e.g., mean, max, min)
+    * **Data types of features**
+* Clean common data problems in the raw dataset
+    * Duplicated records
+    * Inconsistent column names
+    * **Missing values**
+    * **Outliers**
+
+The three aspects ``DataClean`` meaningfully automates are marked in bold.
+
+**Data types of features**: ``DataClean`` detects both basic data types (bool, date, float, integer and string) and statistical data types (real-valued, positive real-valued, count and categorical). ``DataClean`` detects basic data types by applying some logical rules. For statistical data types, ``DataClean`` utlizes the Bayesian model abda [@vergari2018automatic].
+
+**Missing values**: ``DataClean`` identifies characters 'n/a', 'na', '--', '?' as missing. Users can add extra characters to be identified as missing. After the missing values being detected, ``DataClean`` presents the missing data in effective visualizations with the help of missingno [@bilogur2018missingno]. Afterwards, ``DataClean`` recommends the appropriate approach to delete or impute missing values according to the missing mechanism of the given dataset.
+
+**Outliers**: A meta-learner is trained beforehand to predict the optimal outlier detection algorithm for the given dataset. Then outliers are reported to users in various visualizations.
+Users can choose whether or not to drop the outliers.
+
+``DataClean`` has a strong connection to OpenML[@vanschoren2014openml], a platform where people can easily share data, experiments and machine learning models. Users can easily acquire data from OpenML and clean these data with the assistance of ``DataClean``. 
+
+
+
+# Acknowledgements
+
+Many thanks to Dr. Joaquin Vanschoren for his dedication and guidance throughout this project in my master study.
+
+# References
+
