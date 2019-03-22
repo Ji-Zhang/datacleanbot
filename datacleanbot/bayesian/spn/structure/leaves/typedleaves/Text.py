@@ -3,12 +3,12 @@ Created on March 21, 2018
 
 @author: Alejandro Molina
 '''
-from bayesian.spn.io.Text import spn_to_str_equation
-from bayesian.spn.io.Text import add_str_to_spn, add_node_to_str
+from datacleanbot.bayesian.spn.io.Text import spn_to_str_equation
+from datacleanbot.bayesian.spn.io.Text import add_str_to_spn, add_node_to_str
 
-from bayesian.spn.structure.StatisticalTypes import MetaType
-from bayesian.spn.structure.leaves.parametric.Text import add_parametric_text_support
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixture, TypeMixtureUnconstrained
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Text import add_parametric_text_support
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixture, TypeMixtureUnconstrained
 
 
 def type_mixture_to_str(node, feature_names=None, node_to_str=None):

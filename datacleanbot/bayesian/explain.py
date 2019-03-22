@@ -7,8 +7,8 @@ Routines to plot data explanations out of the samplers
 import os
 
 import numpy as np
-from bayesian.utils import fre,  f_pos, f_int
-from bayesian.utils import f_cat, f_ord, f_count
+from datacleanbot.bayesian.utils import fre,  f_pos, f_int
+from datacleanbot.bayesian.utils import f_cat, f_ord, f_count
 
 
 def show_save_explanaition(x, f_rec, fig_size=(10, 7), marker_size=70,
@@ -312,7 +312,7 @@ METRICS_DICT = {'RMSE': rmse,
                 'MAE': mae,
                 'ACC': zero_one}
 
-from bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
 SCORE_LIST_MAP = {MetaType.REAL: ['MSE', 'MAE', 'RMSE', 'M-RMSE', 'R-RMSE', 'S-RMSE'],
                   MetaType.DISCRETE: ['MSE', 'MAE', 'ACC', 'MSLE', 'RMSE', 'M-RMSE', 'R-RMSE', 'S-RMSE']}
 

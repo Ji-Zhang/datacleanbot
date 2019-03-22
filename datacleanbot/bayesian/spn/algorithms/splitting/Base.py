@@ -9,7 +9,7 @@ from networkx import from_numpy_matrix, connected_components
 
 from sklearn.feature_extraction.text import TfidfTransformer
 
-from bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
 
 
 def preproc(data, ds_context, pre_proc, ohe):

@@ -15,9 +15,9 @@ except:
 
 import numpy as np
 
-from bayesian.spn.algorithms.Pruning import prune
-from bayesian.spn.algorithms.Validity import is_valid
-from bayesian.spn.structure.Base import Product, Sum, assign_ids
+from datacleanbot.bayesian.spn.algorithms.Pruning import prune
+from datacleanbot.bayesian.spn.algorithms.Validity import is_valid
+from datacleanbot.bayesian.spn.structure.Base import Product, Sum, assign_ids
 
 
 class Operation(Enum):

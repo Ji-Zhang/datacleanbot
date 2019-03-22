@@ -10,9 +10,9 @@ import theano
 import pyro
 import torch
 
-from bayesian.spn.structure.Base import Leaf
-from bayesian.spn.structure.StatisticalTypes import Type
-from bayesian.spn.structure.leaves.parametric.Parametric import Parametric
+from datacleanbot.bayesian.spn.structure.Base import Leaf
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import Type
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Parametric
 
 
 def orderedGaussianCutpoints(label, mu, sd, shape):

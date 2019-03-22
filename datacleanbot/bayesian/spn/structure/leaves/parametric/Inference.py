@@ -6,10 +6,10 @@ Created on April 15, 2018
 
 import numpy as np
 
-from bayesian.spn.algorithms.Inference import add_node_likelihood, add_node_mpe_likelihood
-from bayesian.spn.structure.leaves.parametric.Parametric import *
-from bayesian.spn.structure.leaves.parametric.pp import *
-from bayesian.spn.structure.leaves.parametric.utils import get_scipy_obj_params
+from datacleanbot.bayesian.spn.algorithms.Inference import add_node_likelihood, add_node_mpe_likelihood
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import *
+from datacleanbot.bayesian.spn.structure.leaves.parametric.pp import *
+from datacleanbot.bayesian.spn.structure.leaves.parametric.utils import get_scipy_obj_params
 
 
 POS_EPS = 1e-7

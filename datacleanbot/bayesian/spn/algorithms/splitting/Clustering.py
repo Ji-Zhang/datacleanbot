@@ -6,7 +6,7 @@ Created on March 25, 2018
 import numpy as np
 from sklearn.cluster import KMeans, DBSCAN
 
-from bayesian.spn.algorithms.splitting.Base import split_data_by_clusters, preproc
+from datacleanbot.bayesian.spn.algorithms.splitting.Base import split_data_by_clusters, preproc
 
 _rpy_initialized = False
 

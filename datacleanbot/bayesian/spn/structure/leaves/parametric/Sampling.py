@@ -5,13 +5,13 @@ Created on April 15, 2018
 @author: Antonio Vergari
 '''
 
-from bayesian.spn.structure.leaves.parametric.Parametric import Parametric, Gaussian, Gamma, Poisson, Categorical, LogNormal, \
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Parametric, Gaussian, Gamma, Poisson, Categorical, LogNormal, \
     Geometric, Exponential, Bernoulli
 
-from bayesian.spn.structure.leaves.parametric.pp import Beta, Laplace, Wald, Weibull, Gumbel
+from datacleanbot.bayesian.spn.structure.leaves.parametric.pp import Beta, Laplace, Wald, Weibull, Gumbel
 import numpy as np
 
-from bayesian.spn.structure.leaves.parametric.utils import get_scipy_obj_params, get_scipy_obj_params_from_str
+from datacleanbot.bayesian.spn.structure.leaves.parametric.utils import get_scipy_obj_params, get_scipy_obj_params_from_str
 
 
 def sample_parametric_node(node, n_samples, rand_gen):

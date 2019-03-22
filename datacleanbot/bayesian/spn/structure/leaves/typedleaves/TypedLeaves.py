@@ -6,9 +6,9 @@ Created on May 04, 2018
 from copy import deepcopy
 
 
-from bayesian.spn.structure.Base import Sum, get_nodes_by_type
-from bayesian.spn.structure.leaves.parametric.Parametric import *
-from bayesian.spn.structure.leaves.parametric.pp import *
+from datacleanbot.bayesian.spn.structure.Base import Sum, get_nodes_by_type
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import *
+from datacleanbot.bayesian.spn.structure.leaves.parametric.pp import *
 
 
 class TypeLeaf(Sum):

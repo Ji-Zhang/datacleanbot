@@ -9,8 +9,8 @@ import numpy as np
 from scipy.special import logsumexp
 
 
-from bayesian.spn.structure.Base import Product, Sum, Leaf, reset_node_counters, max_node_id
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixtureUnconstrained
+from datacleanbot.bayesian.spn.structure.Base import Product, Sum, Leaf, reset_node_counters, max_node_id
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixtureUnconstrained
 
 EPSILON = 0.000000000000001
 

@@ -6,13 +6,13 @@ Created on March 30, 2018
 
 import numpy as np
 
-from bayesian.spn.algorithms.StructureLearning import get_next_operation, learn_structure
-from bayesian.spn.algorithms.splitting.Clustering import get_split_rows_KMeans
-from bayesian.spn.algorithms.splitting.RDC import get_split_cols_RDC, get_split_rows_RDC, get_split_cols_RDC_py, get_split_rows_RDC_py
+from datacleanbot.bayesian.spn.algorithms.StructureLearning import get_next_operation, learn_structure
+from datacleanbot.bayesian.spn.algorithms.splitting.Clustering import get_split_rows_KMeans
+from datacleanbot.bayesian.spn.algorithms.splitting.RDC import get_split_cols_RDC, get_split_rows_RDC, get_split_cols_RDC_py, get_split_rows_RDC_py
 
-from bayesian.spn.structure.leaves.histogram.Histograms import create_histogram_leaf
-from bayesian.spn.structure.leaves.piecewise.PiecewiseLinear import create_piecewise_leaf
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import create_type_leaf
+from datacleanbot.bayesian.spn.structure.leaves.histogram.Histograms import create_histogram_leaf
+from datacleanbot.bayesian.spn.structure.leaves.piecewise.PiecewiseLinear import create_piecewise_leaf
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import create_type_leaf
 
 
 def learn_mspn_with_missing(data, ds_context, cols="rdc", rows="kmeans", min_instances_slice=200, threshold=0.3, linear=False, ohe=False,
@@ -65,7 +65,7 @@ def learn_mspn(data, ds_context, cols="rdc", rows="kmeans", min_instances_slice=
     return learn(data, ds_context, cols, rows, min_instances_slice, threshold, linear, ohe)
 
 
-from bayesian.spn.algorithms.splitting.Random import get_split_cols_binary_random_partition, get_split_rows_binary_random_partition, create_random_unconstrained_type_mixture_leaf
+from datacleanbot.bayesian.spn.algorithms.splitting.Random import get_split_cols_binary_random_partition, get_split_rows_binary_random_partition, create_random_unconstrained_type_mixture_leaf
 
 
 def learn_rand_spn(data, ds_context,

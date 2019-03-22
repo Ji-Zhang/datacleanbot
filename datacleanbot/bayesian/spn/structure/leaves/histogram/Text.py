@@ -3,12 +3,12 @@ Created on March 21, 2018
 
 @author: Alejandro Molina
 '''
-from bayesian.spn.io.Text import spn_to_str_equation
-from bayesian.spn.io.Text import add_str_to_spn, add_node_to_str
+from datacleanbot.bayesian.spn.io.Text import spn_to_str_equation
+from datacleanbot.bayesian.spn.io.Text import add_str_to_spn, add_node_to_str
 from collections import OrderedDict
 import inspect
 
-from bayesian.spn.structure.leaves.histogram.Histograms import Histogram
+from datacleanbot.bayesian.spn.structure.leaves.histogram.Histograms import Histogram
 
 
 def histogram_to_str(node, feature_names=None, node_to_str=None):

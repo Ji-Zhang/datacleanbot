@@ -5,9 +5,9 @@ Created on March 25, 2018
 '''
 from collections import Counter
 
-from bayesian.spn.structure.Base import get_nodes_by_type, Sum, Product, Leaf, get_number_of_edges, get_number_of_layers, Node
-from bayesian.spn.structure.leaves.parametric.Parametric import Parametric
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf
+from datacleanbot.bayesian.spn.structure.Base import get_nodes_by_type, Sum, Product, Leaf, get_number_of_edges, get_number_of_layers, Node
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Parametric
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf
 
 
 def get_structure_stats_dict(node):

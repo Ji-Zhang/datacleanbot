@@ -3,10 +3,10 @@ Created on March 21, 2018
 
 @author: Alejandro Molina
 '''
-from bayesian.spn.io.Text import add_str_to_spn, add_node_to_str
+from datacleanbot.bayesian.spn.io.Text import add_str_to_spn, add_node_to_str
 
-from bayesian.spn.structure.leaves.histogram.Histograms import Histogram
-from bayesian.spn.structure.leaves.piecewise.PiecewiseLinear import PiecewiseLinear
+from datacleanbot.bayesian.spn.structure.leaves.histogram.Histograms import Histogram
+from datacleanbot.bayesian.spn.structure.leaves.piecewise.PiecewiseLinear import PiecewiseLinear
 
 
 def piecewise_to_str(node, feature_names=None, node_to_str=None):

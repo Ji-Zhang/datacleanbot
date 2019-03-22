@@ -14,8 +14,8 @@ import argparse
 
 import sys
 
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf, get_type_partitioning_leaves, TypeMixture, INV_TYPE_PARAM_MAP
-from bayesian.spn.structure.leaves.typedleaves.Text import add_typed_leaves_text_support
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf, get_type_partitioning_leaves, TypeMixture, INV_TYPE_PARAM_MAP
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.Text import add_typed_leaves_text_support
 import functools
 try:
     from time import perf_counter
@@ -36,23 +36,23 @@ import numpy as np
 from numpy.testing import assert_array_almost_equal
 from numpy.testing import assert_array_equal
 import scipy.stats
-from bayesian.spn.structure.Base import Context, Sum
+from datacleanbot.bayesian.spn.structure.Base import Context, Sum
 
-from bayesian.spn.algorithms.Inference import compute_global_type_weights, log_likelihood, mpe
-from bayesian.spn.algorithms.Posteriors import update_parametric_parameters_posterior, PriorDirichlet, PriorGamma, \
+from datacleanbot.bayesian.spn.algorithms.Inference import compute_global_type_weights, log_likelihood, mpe
+from datacleanbot.bayesian.spn.algorithms.Posteriors import update_parametric_parameters_posterior, PriorDirichlet, PriorGamma, \
     PriorNormal, PriorNormalInverseGamma, PriorBeta
-from bayesian.spn.algorithms.Sampling import init_spn_sampling, sample_induced_trees, sample_spn_weights, \
+from datacleanbot.bayesian.spn.algorithms.Sampling import init_spn_sampling, sample_induced_trees, sample_spn_weights, \
     validate_row_partitioning, sample_Ws
-from bayesian.spn.structure.Base import Leaf, get_nodes_by_type, Sum, assign_ids, rebuild_scopes_bottom_up, max_node_id
-from bayesian.spn.structure.StatisticalTypes import MetaType, Type
-from bayesian.spn.structure.leaves.parametric.Inference import add_parametric_inference_support
-from bayesian.spn.structure.leaves.parametric.Parametric import *
-from bayesian.spn.io.Text import spn_to_str_equation
-from bayesian.visualize import plot_distributions_fitting_data, visualize_data_partition, reorder_data_partitions, plot_mixture_components_fitting_data, plot_mixtures_fitting_multilevel
-from bayesian.spn.algorithms.Statistics import get_structure_stats_dict
-from bayesian.spn.algorithms.LearningWrappers import learn_hspn
-from bayesian.explain import print_perf_dict
-from bayesian.utils import running_avg_numba
+from datacleanbot.bayesian.spn.structure.Base import Leaf, get_nodes_by_type, Sum, assign_ids, rebuild_scopes_bottom_up, max_node_id
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType, Type
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Inference import add_parametric_inference_support
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import *
+from datacleanbot.bayesian.spn.io.Text import spn_to_str_equation
+from datacleanbot.bayesian.visualize import plot_distributions_fitting_data, visualize_data_partition, reorder_data_partitions, plot_mixture_components_fitting_data, plot_mixtures_fitting_multilevel
+from datacleanbot.bayesian.spn.algorithms.Statistics import get_structure_stats_dict
+from datacleanbot.bayesian.spn.algorithms.LearningWrappers import learn_hspn
+from datacleanbot.bayesian.explain import print_perf_dict
+from datacleanbot.bayesian.utils import running_avg_numba
 
 #
 # TODOD: change it to be nana
@@ -510,7 +510,7 @@ SCORE_MAP = {MetaType.REAL: mean_squared_error,
 # SCORE_LIST_MAP = {MetaType.REAL: ['MSE', 'MAE', 'RMSE', 'M-RMSE', 'R-RMSE', 'S-RMSE'],
 #                   MetaType.DISCRETE: ['MSE', 'MAE', 'ACC', 'MSLE', 'RMSE', 'M-RMSE', 'R-RMSE', 'S-RMSE']}
 
-from bayesian.explain import SCORE_LIST_MAP, METRICS_DICT
+from datacleanbot.bayesian.explain import SCORE_LIST_MAP, METRICS_DICT
 
 
 def compute_predictions(X_true, X_pred, meta_types, scores=SCORE_MAP):

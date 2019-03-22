@@ -3,8 +3,8 @@ Created on March 27, 2018
 
 @author: Alejandro Molina
 '''
-from bayesian.spn.structure.Base import Leaf, Sum
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf
+from datacleanbot.bayesian.spn.structure.Base import Leaf, Sum
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf
 
 
 def prune(node):

@@ -6,8 +6,8 @@ Created on March 21, 2018
 from collections import OrderedDict
 from enum import Enum
 
-from bayesian.spn.algorithms.Validity import is_valid
-from bayesian.spn.structure.Base import Product, Sum, rebuild_scopes_bottom_up, assign_ids, Leaf
+from datacleanbot.bayesian.spn.algorithms.Validity import is_valid
+from datacleanbot.bayesian.spn.structure.Base import Product, Sum, rebuild_scopes_bottom_up, assign_ids, Leaf
 
 
 def to_JSON(node):

@@ -3,9 +3,9 @@ Created on March 21, 2018
 
 @author: Alejandro Molina
 '''
-from bayesian.spn.algorithms.Pruning import prune
-from bayesian.spn.algorithms.Validity import is_valid
-from bayesian.spn.structure.Base import Sum, Leaf, rebuild_scopes_bottom_up, assign_ids
+from datacleanbot.bayesian.spn.algorithms.Pruning import prune
+from datacleanbot.bayesian.spn.algorithms.Validity import is_valid
+from datacleanbot.bayesian.spn.structure.Base import Sum, Leaf, rebuild_scopes_bottom_up, assign_ids
 
 
 def marginalize(node, scope):

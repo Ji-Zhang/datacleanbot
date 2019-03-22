@@ -7,13 +7,13 @@ import logging
 
 import numpy as np
 
-from bayesian.spn.algorithms.Inference import likelihood, log_likelihood
-from bayesian.spn.io.Text import str_to_spn, to_JSON
-from bayesian.spn.structure.Base import Product, Sum, Leaf, get_nodes_by_type, reset_node_counters
-from bayesian.spn.structure.StatisticalTypes import MetaType
-from bayesian.spn.structure.leaves.parametric.Parametric import Parametric
-from bayesian.spn.structure.leaves.parametric.Sampling import sample_parametric_node
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixtureUnconstrained, TypeMixture
+from datacleanbot.bayesian.spn.algorithms.Inference import likelihood, log_likelihood
+from datacleanbot.bayesian.spn.io.Text import str_to_spn, to_JSON
+from datacleanbot.bayesian.spn.structure.Base import Product, Sum, Leaf, get_nodes_by_type, reset_node_counters
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Parametric
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Sampling import sample_parametric_node
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixtureUnconstrained, TypeMixture
 
 
 def init_spn_sampling(node):

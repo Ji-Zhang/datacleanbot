@@ -8,10 +8,10 @@ import numpy as np
 from rpy2 import robjects
 from rpy2.robjects import numpy2ri
 
-from bayesian.spn.structure.Base import Leaf
-from bayesian.spn.structure.StatisticalTypes import MetaType, Type
-from bayesian.spn.structure.leaves.histogram.Histograms import create_histogram_leaf, getHistogramVals
-from bayesian.spn.structure.leaves.parametric.Parametric import Uniform
+from datacleanbot.bayesian.spn.structure.Base import Leaf
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType, Type
+from datacleanbot.bayesian.spn.structure.leaves.histogram.Histograms import create_histogram_leaf, getHistogramVals
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Uniform
 # from tfspn.histogram import getHistogramVals
 import itertools
 from rpy2.robjects.packages import importr

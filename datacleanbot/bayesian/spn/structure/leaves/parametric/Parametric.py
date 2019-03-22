@@ -5,8 +5,8 @@ Created on March 20, 2018
 
 import numpy as np
 
-from bayesian.spn.structure.Base import Leaf, Sum, get_nodes_by_type
-from bayesian.spn.structure.StatisticalTypes import Type
+from datacleanbot.bayesian.spn.structure.Base import Leaf, Sum, get_nodes_by_type
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import Type
 
 
 class Parametric(Leaf):

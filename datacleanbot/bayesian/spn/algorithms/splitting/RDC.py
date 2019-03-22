@@ -7,7 +7,7 @@ Created on March 20, 2018
 import numpy as np
 from sklearn.cluster import KMeans
 
-from bayesian.spn.algorithms.splitting.Base import split_data_by_clusters, clusters_by_adjacency_matrix
+from datacleanbot.bayesian.spn.algorithms.splitting.Base import split_data_by_clusters, clusters_by_adjacency_matrix
 
 _rpy_initialized = False
 
@@ -108,7 +108,7 @@ import scipy.stats
 import numba
 
 from sklearn.cross_decomposition import CCA
-from bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
 
 GLOBAL_RDC_FEATURES = []
 CCA_MAX_ITER = 100

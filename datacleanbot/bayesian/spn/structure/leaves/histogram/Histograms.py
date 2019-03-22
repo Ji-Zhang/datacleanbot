@@ -5,8 +5,8 @@ Created on March 20, 2018
 '''
 import numpy as np
 
-from bayesian.spn.structure.Base import Leaf
-from bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.structure.Base import Leaf
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
 
 rpy_initialized = False
 

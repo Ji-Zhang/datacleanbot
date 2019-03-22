@@ -10,7 +10,7 @@ def plot_spn2(spn, fname="plot.pdf"):
     from networkx.drawing.nx_pydot import graphviz_layout
 
     import matplotlib.pyplot as plt
-    from bayesian.spn.structure.Base import Sum, Product, Leaf, get_nodes_by_type
+    from datacleanbot.bayesian.spn.structure.Base import Sum, Product, Leaf, get_nodes_by_type
     import numpy as np
 
     all_nodes = get_nodes_by_type(spn)

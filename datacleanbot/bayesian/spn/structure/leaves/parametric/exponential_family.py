@@ -1,6 +1,6 @@
 import numpy as np
-from bayesian.spn.structure.Base import Leaf, Sum
-from bayesian.spn.structure.StatisticalTypes import Type
+from datacleanbot.bayesian.spn.structure.Base import Leaf, Sum
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import Type
 
 
 class ExponentialFamily(Leaf):

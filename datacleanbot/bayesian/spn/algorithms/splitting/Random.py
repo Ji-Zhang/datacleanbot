@@ -6,9 +6,9 @@ Created on March 20, 2018
 
 import numpy as np
 
-from bayesian.spn.algorithms.splitting.Base import split_data_by_clusters, preproc
-from bayesian.spn.structure.StatisticalTypes import Type
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import type_mixture_leaf_factory
+from datacleanbot.bayesian.spn.algorithms.splitting.Base import split_data_by_clusters, preproc
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import Type
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import type_mixture_leaf_factory
 
 
 def make_planes(N, dim):
@@ -91,10 +91,10 @@ def get_split_rows_binary_random_partition(beta_a=2, beta_b=5):
 
 
 from copy import deepcopy
-from bayesian.spn.structure.leaves.parametric.Parametric import *
-from bayesian.spn.structure.leaves.parametric.Sampling import sample_parametric_node
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import *
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Sampling import sample_parametric_node
 import scipy.stats
-from bayesian.spn.io.Text import to_JSON, spn_to_str_equation
+from datacleanbot.bayesian.spn.io.Text import to_JSON, spn_to_str_equation
 
 
 def draw_params_gaussian_prior(nig_prior, rand_gen):

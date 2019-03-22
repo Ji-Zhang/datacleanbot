@@ -5,10 +5,10 @@ Created on March 22, 2018
 '''
 import subprocess
 
-from bayesian.spn.algorithms.Inference import histogram_likelihood
-from bayesian.spn.io.Text import spn_to_str_equation
-from bayesian.spn.structure.Base import get_nodes_by_type, Leaf
-from bayesian.spn.structure.leaves.Histograms import Histogram
+from datacleanbot.bayesian.spn.algorithms.Inference import histogram_likelihood
+from datacleanbot.bayesian.spn.io.Text import spn_to_str_equation
+from datacleanbot.bayesian.spn.structure.Base import get_nodes_by_type, Leaf
+from datacleanbot.bayesian.spn.structure.leaves.Histograms import Histogram
 
 _leaf_to_cpp = {}
 

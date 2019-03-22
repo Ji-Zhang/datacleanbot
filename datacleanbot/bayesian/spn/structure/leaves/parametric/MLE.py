@@ -6,8 +6,8 @@ Created on April 15, 2018
 import numpy as np
 from scipy.stats import gamma, lognorm
 
-from bayesian.spn.structure.leaves.parametric.Parametric import Gaussian, Gamma, Poisson, Categorical, LogNormal
-from bayesian.spn.structure.leaves.parametric.Parametric import mle_param_fit_gamma
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Gaussian, Gamma, Poisson, Categorical, LogNormal
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import mle_param_fit_gamma
 
 
 def update_parametric_parameters_mle(node, data):

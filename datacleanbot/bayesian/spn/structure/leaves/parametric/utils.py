@@ -6,8 +6,8 @@ Created on April 29, 2018
 import numpy as np
 from scipy.stats import *
 
-from bayesian.spn.structure.leaves.parametric.Parametric import *
-from bayesian.spn.structure.leaves.parametric.pp import *
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import *
+from datacleanbot.bayesian.spn.structure.leaves.parametric.pp import *
 
 
 def get_scipy_obj_params(node):

@@ -2,6 +2,9 @@
 
 import sys
 import os
+print("Current working directory")
+print(os.getcwd()) # get current working directory
+
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -16,7 +19,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import RandomForestClassifier
 from scipy.io import savemat
-from bayesian.bin import abda
+from datacleanbot.bayesian.bin import abda
 
 from sklearn.preprocessing import Imputer
 from fancyimpute import KNN, IterativeImputer, MatrixFactorization
@@ -41,6 +44,10 @@ from sklearn.ensemble import IsolationForest
 from sklearn import svm
 
 from pandas.plotting import parallel_coordinates
+
+from urllib.request import urlopen
+
+
 
 plt.rcParams['figure.dpi']= 120
 plt.rcParams['xtick.labelsize'] = 8
@@ -327,7 +334,7 @@ def generate_mat(Xy, extra_cardinality=1):
                  'T': np.asarray(meta_types),
                  'R': np.asarray(discrete_cardinality)}
     # pprint.pprint(data_dict)
-    savemat('bayesian/data/temp/data.mat', data_dict, oned_as='row')
+    savemat('data.mat', data_dict, oned_as='row')
 
 def discover_type_bayesian(Xy):
     """Infer data types for each feature using Bayesian model.
@@ -352,7 +359,7 @@ def discover_type_bayesian(Xy):
 #     with HiddenPrints():
     with NoStdStreams():
         print("This will not be printed")
-        weights = abda.main(seed=1337, dataset='bayesian/data/temp/data.mat', exp_id=None, args_output='./exp/temp/', args_miss=None, verbose=1,
+        weights = abda.main(seed=1337, dataset='data.mat', exp_id=None, args_output='./exp/temp/', args_miss=None, verbose=1,
          args_col_split_threshold=0.8, args_min_inst_slice=500, args_leaf_type='pm',
          args_type_param_map='spicky-prior-1', args_param_init='default', args_param_weight_init='uniform',
          args_n_iters=5, args_burn_in=4000, args_w_unif_prior=100, args_save_samples=1,
@@ -1035,7 +1042,7 @@ def predict_best_anomaly_algorithm(X, y):
     mf.shape
     
     # load meta learner
-    metalearner = joblib.load('metalearner_rf.pkl')
+    metalearner = joblib.load(urlopen("https://github.com/Ji-Zhang/datacleanbot/blob/master/datacleanbot/metalearner_rf.pkl?raw=true"))
     best_anomaly_algorithm = metalearner.predict(mf)
     if best_anomaly_algorithm[0] == 0:
         print("The recommended approach is isolation forest.")

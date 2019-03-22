@@ -3,8 +3,8 @@ Created on March 20, 2018
 
 @author: Alejandro Molina
 '''
-from bayesian.spn.structure.Base import Sum, Leaf, Product
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixture
+from datacleanbot.bayesian.spn.structure.Base import Sum, Leaf, Product
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeMixture
 
 
 def is_consistent(node):

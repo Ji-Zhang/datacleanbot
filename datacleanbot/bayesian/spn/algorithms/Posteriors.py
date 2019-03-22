@@ -8,10 +8,10 @@ Created on April 10, 2018
 import numpy as np
 import scipy
 
-from bayesian.spn.structure.leaves.parametric.Parametric import Gaussian, Gamma, LogNormal, Poisson, Categorical, Bernoulli, \
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Gaussian, Gamma, LogNormal, Poisson, Categorical, Bernoulli, \
     Geometric, Exponential
-from bayesian.spn.structure.leaves.parametric.pp import Beta, Gumbel, Laplace, Wald, Weibull
-from bayesian.spn.structure.leaves.parametric.Sampling import sample_parametric_node, sample_parametric_dist
+from datacleanbot.bayesian.spn.structure.leaves.parametric.pp import Beta, Gumbel, Laplace, Wald, Weibull
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Sampling import sample_parametric_node, sample_parametric_dist
 
 
 class PriorNormalInverseGamma:

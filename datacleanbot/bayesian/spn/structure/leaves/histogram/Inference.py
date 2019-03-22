@@ -6,8 +6,8 @@ Created on April 15, 2018
 
 import numpy as np
 
-from bayesian.spn.algorithms.Inference import EPSILON, add_node_likelihood, add_node_mpe_likelihood
-from bayesian.spn.structure.leaves.histogram.Histograms import Histogram
+from datacleanbot.bayesian.spn.algorithms.Inference import EPSILON, add_node_likelihood, add_node_mpe_likelihood
+from datacleanbot.bayesian.spn.structure.leaves.histogram.Histograms import Histogram
 from numba import jit
 
 

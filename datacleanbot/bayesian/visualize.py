@@ -132,8 +132,8 @@ def reorder_data_partitions(X, cmap="husl"):
     return np.array([int(i) for i in D['ivl']])
 
 
-from bayesian.spn.structure.StatisticalTypes import MetaType
-from bayesian.spn.algorithms.Inference import likelihood
+from datacleanbot.bayesian.spn.structure.StatisticalTypes import MetaType
+from datacleanbot.bayesian.spn.algorithms.Inference import likelihood
 
 
 def approximate_density(dist_node, X, bins=100):
@@ -244,9 +244,9 @@ def plot_distributions_fitting_data(data,
     plt.close()
 
 
-from bayesian.spn.structure.Base import get_nodes_by_type, compute_leaf_global_mix_weights, compute_partition_id_map, Product, Sum
-from bayesian.spn.structure.leaves.parametric.Parametric import Parametric
-from bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf
+from datacleanbot.bayesian.spn.structure.Base import get_nodes_by_type, compute_leaf_global_mix_weights, compute_partition_id_map, Product, Sum
+from datacleanbot.bayesian.spn.structure.leaves.parametric.Parametric import Parametric
+from datacleanbot.bayesian.spn.structure.leaves.typedleaves.TypedLeaves import TypeLeaf
 
 TEXT_Y_POS_PERC = 0.01
 
