@@ -22,7 +22,8 @@ setuptools.setup(
         'cvxopt>=1.1.9',
         'pymc3>=3.4',
         'pyro-ppl>=0.2',
-        'ipython>=6.1.0',],
+        'ipython>=6.1.0',
+        'rpy2==2.9.4'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
