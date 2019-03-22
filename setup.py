@@ -8,9 +8,6 @@ setuptools.setup(
     description="automated data cleaning tool",
     url="https://github.com/Ji-Zhang/datacleanbot",
     packages=setuptools.find_packages(),
-    package_data = {
-        'bloomfilter':['*.txt','*.pkl'],
-    },
     install_requires=[ 
         'numpy>=1.14.2',
         'pandas',
@@ -24,7 +21,8 @@ setuptools.setup(
         'pystruct>=0.2.4',
         'cvxopt>=1.1.9',
         'pymc3>=3.4',
-        'pyro-ppl>=0.2',],
+        'pyro-ppl>=0.2',
+        'ipython>=6.1.0',],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Usage &mdash; dataclean 1.0 documentation</title>
+  <title>Usage &mdash; datacleanbot 0.1 documentation</title>
   
 
   
@@ -23,7 +23,7 @@
       <script type="text/javascript">
           var DOCUMENTATION_OPTIONS = {
               URL_ROOT:'./',
-              VERSION:'1.0',
+              VERSION:'0.1',
               LANGUAGE:'None',
               COLLAPSE_INDEX:false,
               FILE_SUFFIX:'.html',
@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Example" href="example.html" />
-    <link rel="prev" title="DataClean" href="index.html" /> 
+    <link rel="prev" title="datacleanbot" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -59,7 +59,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> dataclean
+            <a href="index.html" class="icon icon-home"> datacleanbot
           
 
           
@@ -69,7 +69,7 @@
             
             
               <div class="version">
-                1.0
+                0.1
               </div>
             
           
@@ -123,7 +123,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">dataclean</a>
+          <a href="index.html">datacleanbot</a>
         
       </nav>
 
@@ -203,7 +203,7 @@
 <h2>Acquire Data<a class="headerlink" href="#acquire-data" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to acquire data from <a class="reference external" href="https://www.openml.org/">OpenML</a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">openml</span> <span class="kn">as</span> <span class="nn">oml</span>
-<span class="kn">import</span> <span class="nn">dataclean</span> <span class="kn">as</span> <span class="nn">dc</span>
+<span class="kn">import</span> <span class="nn">datacleanbot.dataclean</span> <span class="kn">as</span> <span class="nn">dc</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">oml</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_dataset</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="c1"># id: openml dataset id</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_data</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">data</span><span class="o">.</span><span class="n">default_target_attribute</span><span class="p">,</span> <span class="n">return_attribute_names</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -213,7 +213,7 @@
 </div>
 <div class="section" id="show-impotant-features">
 <h2>Show Impotant Features<a class="headerlink" href="#show-impotant-features" title="Permalink to this headline">¶</a></h2>
-<p>DataClean computes the most important features of
+<p><code class="docutils literal"><span class="pre">datacleanbot</span></code> computes the most important features of
 the given dataset using random forest and present the
 15 most useful features to the user.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">show_important_features</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
@@ -232,7 +232,7 @@ lower case.</p>
 </div>
 <div class="section" id="show-statistical-inforamtion">
 <h2>Show Statistical Inforamtion<a class="headerlink" href="#show-statistical-inforamtion" title="Permalink to this headline">¶</a></h2>
-<p>DataClean can present the statistical information to
+<p><code class="docutils literal"><span class="pre">datacleanbot</span></code> can present the statistical information to
 help users gain a better understanding of the data
 distribution.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">show_statistical_info</span><span class="p">(</span><span class="n">Xy</span><span class="p">)</span>
@@ -241,10 +241,10 @@ distribution.</p>
 </div>
 <div class="section" id="discover-data-types">
 <h2>Discover Data Types<a class="headerlink" href="#discover-data-types" title="Permalink to this headline">¶</a></h2>
-<p>DataClean can discover feature data types.
+<p><code class="docutils literal"><span class="pre">datacleanbot</span></code> can discover feature data types.
 Basic data types discovered are ‘datetime’, ‘float’, ‘integer’,
 ‘bool’ and ‘string’.
-DataClean also can discover statistical data types (real, positive real,
+<code class="docutils literal"><span class="pre">datacleanbot</span></code> also can discover statistical data types (real, positive real,
 categorical and count) using <a class="reference external" href="https://arxiv.org/abs/1807.09306/">Bayesian Model abda</a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">discover_types</span><span class="p">(</span><span class="n">Xy</span><span class="p">)</span>
 </pre></div>
@@ -252,17 +252,17 @@ categorical and count) using <a class="reference external" href="https://arxiv.o
 </div>
 <div class="section" id="clean-duplicated-rows">
 <h2>Clean Duplicated Rows<a class="headerlink" href="#clean-duplicated-rows" title="Permalink to this headline">¶</a></h2>
-<p>DataClean detects the duplicated records and reports them to users.</p>
+<p><code class="docutils literal"><span class="pre">datacleanbot</span></code> detects the duplicated records and reports them to users.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dc</span><span class="o">.</span><span class="n">clean_duplicated_rows</span><span class="p">(</span><span class="n">Xy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="handle-missing-values">
 <h2>Handle Missing Values<a class="headerlink" href="#handle-missing-values" title="Permalink to this headline">¶</a></h2>
-<p>DataClean identifies characters ‘n/a’, ‘na’, ‘–’ and ‘?’ as missing values.
+<p><code class="docutils literal"><span class="pre">datacleanbot</span></code> identifies characters ‘n/a’, ‘na’, ‘–’ and ‘?’ as missing values.
 Users can add extra characters to be considered as missing. After the missing
-values being detected, DataClean will present the missing values in effective
-visualizations to help users identify the missing mechanism. Afterwards, DataClean
+values being detected, <code class="docutils literal"><span class="pre">datacleanbot</span></code> will present the missing values in effective
+visualizations to help users identify the missing mechanism. Afterwards, <code class="docutils literal"><span class="pre">datacleanbot</span></code>
 recommends the appropriate approach to clean missing values according the missing
 mechanism.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">features</span><span class="p">,</span> <span class="n">Xy</span> <span class="o">=</span> <span class="n">dc</span><span class="o">.</span><span class="n">handle_missing</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">Xy</span><span class="p">)</span>
@@ -293,7 +293,7 @@ and users can choose to drop them or not.</p>
         <a href="example.html" class="btn btn-neutral float-right" title="Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral float-left" title="DataClean" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="datacleanbot" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

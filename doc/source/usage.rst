@@ -8,7 +8,7 @@ The first step is to acquire data from `OpenML <https://www.openml.org/>`_.
 .. code-block:: python
    
    import openml as oml
-   import dataclean as dc
+   import datacleanbot.dataclean as dc
 
    data = oml.datasets.get_dataset(id) # id: openml dataset id
    X, y, features = data.get_data(target=data.default_target_attribute, return_attribute_names=True)
@@ -18,7 +18,7 @@ The first step is to acquire data from `OpenML <https://www.openml.org/>`_.
 
 Show Impotant Features
 ----------------------
-DataClean computes the most important features of
+``datacleanbot`` computes the most important features of
 the given dataset using random forest and present the
 15 most useful features to the user.
 
@@ -40,7 +40,7 @@ lower case.
 
 Show Statistical Inforamtion
 ----------------------------
-DataClean can present the statistical information to
+``datacleanbot`` can present the statistical information to
 help users gain a better understanding of the data 
 distribution.
 
@@ -51,10 +51,10 @@ distribution.
 Discover Data Types
 -------------------
 
-DataClean can discover feature data types.
+``datacleanbot`` can discover feature data types.
 Basic data types discovered are 'datetime', 'float', 'integer',
 'bool' and 'string'.
-DataClean also can discover statistical data types (real, positive real, 
+``datacleanbot`` also can discover statistical data types (real, positive real, 
 categorical and count) using `Bayesian Model abda <https://arxiv.org/abs/1807.09306/>`_.
 
 .. code-block:: python
@@ -64,7 +64,7 @@ categorical and count) using `Bayesian Model abda <https://arxiv.org/abs/1807.09
 Clean Duplicated Rows
 ---------------------
 
-DataClean detects the duplicated records and reports them to users.
+``datacleanbot`` detects the duplicated records and reports them to users.
 
 .. code-block:: python
 
@@ -73,10 +73,10 @@ DataClean detects the duplicated records and reports them to users.
 Handle Missing Values
 ---------------------
 
-DataClean identifies characters 'n/a', 'na', '--' and '?' as missing values.
+``datacleanbot`` identifies characters 'n/a', 'na', '--' and '?' as missing values.
 Users can add extra characters to be considered as missing. After the missing
-values being detected, DataClean will present the missing values in effective
-visualizations to help users identify the missing mechanism. Afterwards, DataClean
+values being detected, ``datacleanbot`` will present the missing values in effective
+visualizations to help users identify the missing mechanism. Afterwards, ``datacleanbot``
 recommends the appropriate approach to clean missing values according the missing
 mechanism.
 

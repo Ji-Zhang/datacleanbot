@@ -2,8 +2,8 @@
 
 import sys
 import os
-print("Current working directory")
-print(os.getcwd()) # get current working directory
+# print("Current working directory")
+# print(os.getcwd()) # get current working directory
 
 import numpy as np
 import pandas as pd
@@ -52,9 +52,6 @@ from urllib.request import urlopen
 plt.rcParams['figure.dpi']= 120
 plt.rcParams['xtick.labelsize'] = 8
 plt.rcParams['ytick.labelsize'] = 8 
-
-print("Current working directory")
-print(os.getcwd()) # get current working directory
 
 # hide print       
 class NoStdStreams(object):
