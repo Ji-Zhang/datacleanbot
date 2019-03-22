@@ -1,5 +1,5 @@
 ---
-title: 'DataClean: automated, data-driven tool to help users clean data effectively'
+title: 'datacleanbot: automated, data-driven tool to help users clean data effectively'
 tags:
   - data clean
   - Python
