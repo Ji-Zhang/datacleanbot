@@ -171,5 +171,10 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-autodoc_mock_imports = ['datacleanbot', 'ipython', 'pystruct', 'pymc3', 'pyro-ppl', 'rpy2']
+autodoc_mock_imports = ['datacleanbot', 
+                        'IPython', 
+                        'pystruct', 
+                        'pymc3', 
+                        'pyro-ppl', 
+                        'rpy2']
 
