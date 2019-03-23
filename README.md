@@ -1,4 +1,6 @@
-# datacleanbot [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+# datacleanbot
 Automated Data Cleaning Tool.
 The main goal is to develop a Python tool ``datacleanbot`` such that:
     Given a random parsed raw dataset representing a supervised learning problem, the Python tool is capable of automatically identifying the potential issues and reporting the results and recommendations to the end-user in an effective way.
@@ -41,4 +43,4 @@ The three aspects ``datacleanbot`` meaningfully automates are marked in bold.
 
 ## User's Guide
 
-The user's guide can be found at [datacleanbot](https://automatic-data-cleaning.readthedocs.io/en/latest/index.html).
+The user's guide can be found at [datacleanbot](https://datacleanbot.readthedocs.io/en/latest/).
