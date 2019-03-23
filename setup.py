@@ -16,7 +16,7 @@ setuptools.setup(
         'seaborn>=0.8',
         'matplotlib>=2.2.2',
         'missingno>=0.4.0',
-        'fancyimpute>=0.4.0',
+        'fancyimpute',
         'numba>=0.27',
         'pystruct>=0.2.4',
         'cvxopt>=1.1.9',
