@@ -8,10 +8,3 @@ missingno>=0.4.1
 seaborn>=0.8
 matplotlib>=2.2.2
 fancyimpute>=0.4.0
-ipython
-numba>=0.27
-pystruct>=0.2.4
-cvxopt>=1.1.9
-pymc3>=3.4
-pyro-ppl>=0.2
-rpy2==2.9.4
