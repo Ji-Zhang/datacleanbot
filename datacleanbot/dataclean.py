@@ -350,7 +350,6 @@ def discover_type_bayesian(Xy):
     result : list
         List of data types.
     """
-    statistical_types = []
     statistical_types = [] 
     generate_mat(Xy)
     #     with HiddenPrints():
@@ -380,6 +379,11 @@ def discover_types(Xy):
         Xy can only be numeric in order to run the Bayesian model.
     """
     if isinstance(Xy, pd.DataFrame):
+        Xy = Xy.values
+
+    imp_mean = SimpleImputer(missing_values=np.nan, strategy='mean')
+    Xy = imp_mean.fit_transform(Xy)
+
     display(HTML('<h2>Discover Data Types</h2>'))
     display(HTML('<h4>Simple Data Types</h4>'))
     print(discover_type_heuristic(Xy))
