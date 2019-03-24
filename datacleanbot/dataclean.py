@@ -294,8 +294,7 @@ def generate_mat(Xy, extra_cardinality=1):
     In order to use the Bayesian model, data need to be converted
     to the .mat format.
     """
-    imp_mean = SimpleImputer(missing_values=np.nan, strategy='mean')
-    data = imp_mean.fit_transform(Xy)
+    data = Xy
     simple_types = discover_type_heuristic(data)
     # map simple types to meta types
     # 1: real (w positive: all real | positive | interval)
@@ -321,7 +320,7 @@ def generate_mat(Xy, extra_cardinality=1):
                     meta_types.append(2)
         else:
             meta_types.append(1)
-    discrete_cardinality = [] # number of unique for discrete feature, 1 for others
+    discrete_cardinality = [] # max for discrete feature, 1 for others
     for i in range(len(meta_types)):
         if (meta_types[i] == 4):
             discrete_cardinality.append(int(np.max(data[:,i])) + extra_cardinality) 
@@ -352,8 +351,9 @@ def discover_type_bayesian(Xy):
         List of data types.
     """
     statistical_types = []
+    statistical_types = [] 
     generate_mat(Xy)
-#     with HiddenPrints():
+    #     with HiddenPrints():
     with NoStdStreams():
         print("This will not be printed")
         weights = abda.main(seed=1337, dataset='data.mat', exp_id=None, args_output='./exp/temp/', args_miss=None, verbose=1,
@@ -376,15 +376,20 @@ def discover_types(Xy):
     Parameters
     ----------
 
-    Xy : numpy array
+    Xy : numpy array or DataFrame
         Xy can only be numeric in order to run the Bayesian model.
     """
+    if isinstance(Xy, pd.DataFrame):
     display(HTML('<h2>Discover Data Types</h2>'))
     display(HTML('<h4>Simple Data Types</h4>'))
     print(discover_type_heuristic(Xy))
     display(HTML('<h4>Statistical Data Types</h4>'))
-    print(discover_type_bayesian(Xy))
-
+    df = pd.DataFrame(Xy)
+    statistical_types = []
+    for col in df.columns:
+        statistical_types.append(discover_type_bayesian(df[[col]].values))
+    statistical_types_flat = [item for sublist in statistical_types for item in sublist]
+    print(statistical_types_flat)
 ################################
 
 ##### Duplicated Rows ######
