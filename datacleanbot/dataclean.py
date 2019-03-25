@@ -388,12 +388,10 @@ def discover_types(Xy):
     display(HTML('<h4>Simple Data Types</h4>'))
     print(discover_type_heuristic(Xy))
     display(HTML('<h4>Statistical Data Types</h4>'))
-    df = pd.DataFrame(Xy)
-    statistical_types = []
-    for col in df.columns:
-        statistical_types.append(discover_type_bayesian(df[[col]].values))
-    statistical_types_flat = [item for sublist in statistical_types for item in sublist]
-    print(statistical_types_flat)
+    try:
+        print(discover_type_bayesian(Xy))
+    except:
+        print("Failed to run the Bayesian model.")
 ################################
 
 ##### Duplicated Rows ######

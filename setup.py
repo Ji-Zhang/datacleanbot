@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="datacleanbot",
-    version="0.3",
+    version="0.4",
     author="Ji Zhang",
     author_email="",
     description="automated data cleaning tool",
