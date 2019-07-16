@@ -9,18 +9,18 @@ tags:
   - outlier detection
 authors:
   - name: Ji Zhang
-    orcid: ?????
+    orcid: 0000-0002-4913-518X
     affiliation: 1
 affiliations:
- - name: ?????
+ - name: Eindhoven University of Technology
    index: 1
-date: 12 March 2019
+date: 16 July 2019
 bibliography: paper.bib
 ---
 
 # Summary
 
-Data in real life almost never come in a clean way and poor data quality may severely affect the effectiveness of learning algorithms [@Sessions_theeffects]. Consequently, raw data need to be cleaned before being able to proceed with training or running machine learning models.
+Data in real life almost never come in a clean way, and poor data quality may severely affect the effectiveness of learning algorithms [@Sessions_theeffects]. Consequently, raw data need to be cleaned before being able to proceed with training or running machine learning models.
 
 ``datacleanbot`` is a Python package which can offer automated, data-driven support to help users clean data effectively and smoothly. Given a random parsed raw dataset representing a supervised learning problem, ``datacleanbot`` is capable of automatically identifying the potential issues and reporting the results and recommendations to the end-user in an effective way. To be noticed, ``datacleanbot`` is aimed for supervised learning tasks and data need to be parsed as numeric format beforehand.
 
