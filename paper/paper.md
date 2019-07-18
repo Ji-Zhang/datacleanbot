@@ -25,11 +25,15 @@ Data in real life almost never come in a clean way, and poor data quality may se
 ``datacleanbot`` is a Python package which can offer automated, data-driven support to help users clean data effectively and smoothly. Given a random parsed raw dataset representing a supervised learning problem, ``datacleanbot`` is capable of automatically identifying the potential issues and reporting the results and recommendations to the end-user in an effective way. To be noticed, ``datacleanbot`` is aimed for supervised learning tasks and data need to be parsed as numeric format beforehand.
 
 ``datacleanbot`` is equipped with the following capabilities:
+
 * Present an overview report of the given dataset
+    
     * The most important features
     * Statistical information (e.g., mean, max, min)
     * **Data types of features**
+
 * Clean common data problems in the raw dataset
+    
     * Duplicated records
     * Inconsistent column names
     * **Missing values**
