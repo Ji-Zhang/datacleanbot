@@ -3,7 +3,7 @@
 This repository contains the code of the paper 
 
 _Antonio Vergari, Alejandro Molina, Robert Peharz, Zoubin Ghahramani, Kristian Kersting and Isabel Valera_  
-"[**Automatic Bayesian Density Analysis**]()"
+"[**Automatic Bayesian Density Analysis**](https://arxiv.org/abs/1807.09306)"
 
 2018
 
