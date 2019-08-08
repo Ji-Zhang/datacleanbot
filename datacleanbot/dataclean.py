@@ -1027,7 +1027,7 @@ def compute_metafeatures(X, y):
         metafeatures_clf['decision_node'], metafeatures_clf['decision_node_time'] = pipeline(X, y, DecisionTreeClassifier(criterion='entropy', splitter='best', max_depth=1, random_state=0)) 
         metafeatures_clf['random_node'], metafeatures_clf['random_node_time'] = pipeline(X, y, DecisionTreeClassifier(criterion='entropy', splitter='random', max_depth=1, random_state=0))
         metafeatures = list(metafeatures_clf.values())
-    
+        
     return metafeatures
 
 def predict_best_anomaly_algorithm(X, y):

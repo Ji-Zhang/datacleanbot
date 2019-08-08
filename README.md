@@ -13,14 +13,24 @@ $ pip install datacleanbot
 
 ## QuickStart
 
-Acquire data from OpenML:
+### Install OpenML (version 0.9.0):
+
+OpenML is used to easily import datasets and share models and experiments.
+
+```sh
+$ pip install openml
+```
+
+For Windows, you need to have C++ Compiler installed.
+
+### Acquire data from OpenML:
 
     >>> import openml as oml
     >>> data = oml.datasets.get_dataset(id) # id: openml dataset id
-    >>> X, y, features = data.get_data(target=data.default_target_attribute, return_attribute_names=True)
-    >>> Xy = data.get_data()
+    >>> X, y, categorical_indicator, features = data.get_data(target=data.default_target_attribute, dataset_format='array')
+    >>> Xy = np.concatenate((X,y.reshape((y.shape[0],1))), axis=1)
 
-Autoclean data with datacleanbot
+### Autoclean data with datacleanbot:
 
     >>> import datacleanbot.dataclean as dc
     >>> Xy = dc.autoclean(Xy, data.name, features)
