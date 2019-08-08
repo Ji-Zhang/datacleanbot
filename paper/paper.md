@@ -20,7 +20,7 @@ bibliography: paper.bib
 
 # Summary
 
-Data in real life almost never come in a clean way, and poor data quality may severely affect the effectiveness of learning algorithms [@Sessions_theeffects]. Consequently, raw data need to be cleaned before being able to proceed with training or running machine learning models.
+Data in real life almost never come in a clean way, and poor data quality may severely affect the effectiveness of learning algorithms [@Sessions2006TheEO]. Consequently, raw data need to be cleaned before being able to proceed with training or running machine learning models.
 
 ``datacleanbot`` is a Python package which can offer automated, data-driven support to help users clean data effectively and smoothly. Given a random parsed raw dataset representing a supervised learning problem, ``datacleanbot`` is capable of automatically identifying the potential issues and reporting the results and recommendations to the end-user in an effective way. To be noticed, ``datacleanbot`` is aimed for supervised learning tasks and data need to be parsed as numeric format beforehand.
 
@@ -43,12 +43,12 @@ The three aspects ``datacleanbot`` meaningfully automates are marked in bold.
 
 **Data types of features**: ``datacleanbot`` detects both basic data types (bool, date, float, integer and string) and statistical data types (real-valued, positive real-valued, count and categorical). ``datacleanbot`` detects basic data types by applying some logical rules. For statistical data types, ``datacleanbot`` utlizes the Bayesian model abda [@vergari2018automatic].
 
-**Missing values**: ``datacleanbot`` identifies characters 'n/a', 'na', '--', '?' as missing. Users can add extra characters to be identified as missing. After the missing values being detected, ``datacleanbot`` presents the missing data in effective visualizations with the help of missingno [@bilogur2018missingno]. Afterwards, ``datacleanbot`` recommends the appropriate approach to delete or impute missing values according to the missing mechanism of the given dataset.
+**Missing values**: ``datacleanbot`` identifies characters 'n/a', 'na', '--', '?' as missing. Users can add extra characters to be identified as missing. After the missing values being detected, ``datacleanbot`` presents the missing data in effective visualizations with the help of missingno [@Bilogur2018Missingno]. Afterwards, ``datacleanbot`` recommends the appropriate approach to delete or impute missing values according to the missing mechanism of the given dataset.
 
 **Outliers**: A meta-learner is trained beforehand to predict the optimal outlier detection algorithm for the given dataset. Then outliers are reported to users in various visualizations.
 Users can choose whether or not to drop the outliers.
 
-``datacleanbot`` has a strong connection to OpenML[@vanschoren2014openml], a platform where people can easily share data, experiments and machine learning models. Users can easily acquire data from OpenML and clean these data with the assistance of ``datacleanbot``. 
+``datacleanbot`` has a strong connection to OpenML[@OpenML2013], a platform where people can easily share data, experiments and machine learning models. Users can easily acquire data from OpenML and clean these data with the assistance of ``datacleanbot``. 
 
 
 
