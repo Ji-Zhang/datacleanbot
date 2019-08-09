@@ -9,10 +9,12 @@ The first step is to acquire data from `OpenML <https://www.openml.org/>`_.
    
    import openml as oml
    import datacleanbot.dataclean as dc
+   import numpy as np
 
    data = oml.datasets.get_dataset(id) # id: openml dataset id
-   X, y, features = data.get_data(target=data.default_target_attribute, return_attribute_names=True)
-   Xy = data.get_data()
+   X, y, categorical_indicator, features = data.get_data(target=data.default_target_attribute, dataset_format='array')
+   Xy = np.concatenate((X,y.reshape((y.shape[0],1))), axis=1)
+
 
 
 
