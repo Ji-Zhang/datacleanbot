@@ -4,7 +4,7 @@ __pycache__/
 # Distribution / packaging
 build/
 dist/
-datacleanbot/exp/temp
+datacleanbot/tests/
 eggs/
 .eggs/
 *.egg-info/
