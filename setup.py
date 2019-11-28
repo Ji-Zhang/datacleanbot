@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="datacleanbot",
-    version="0.4",
+    version="0.5",
     author="Ji Zhang",
     author_email="",
     description="automated data cleaning tool",
@@ -21,13 +21,7 @@ setuptools.setup(
         'seaborn>=0.8',
         'matplotlib>=2.2.2',
         'missingno>=0.4.0',
-        'fancyimpute',
-        'numba>=0.27',
-        'pystruct>=0.2.4',
-        'cvxopt>=1.1.9',
-        'pymc3>=3.4',
-        'pyro-ppl>=0.2',
-        'rpy2==2.9.4'],
+        'fancyimpute'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
