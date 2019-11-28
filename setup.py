@@ -21,6 +21,7 @@ setuptools.setup(
         'seaborn>=0.8',
         'matplotlib>=2.2.2',
         'missingno>=0.4.0',
+        'openml>=0.9.0',
         'fancyimpute'],
     classifiers=[
         "Programming Language :: Python :: 3",
