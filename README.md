@@ -42,14 +42,14 @@ For Windows, you need to have C++ Compiler installed.
 * Present an overview report of the given dataset
     * The most important features
     * Statistical information (e.g., mean, max, min)
-    * **Data types of features**
+    * Data types of features
 * Clean common data problems in the raw dataset
     * Duplicated records
     * Inconsistent column names
     * **Missing values**
     * **Outliers**
 
-The three aspects ``datacleanbot`` meaningfully automates are marked in bold.
+The two aspects ``datacleanbot`` meaningfully automates are marked in bold.
 
 ## User's Guide
 
