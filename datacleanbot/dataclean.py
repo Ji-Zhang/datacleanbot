@@ -21,7 +21,7 @@ from sklearn.ensemble import RandomForestClassifier
 from scipy.io import savemat
 # from datacleanbot.bayesian.bin import abda
 
-from sklearn.preprocessing import Imputer
+from sklearn.impute import SimpleImputer
 from fancyimpute import KNN, IterativeImputer, MatrixFactorization
 import warnings
 warnings.filterwarnings('ignore')
@@ -762,11 +762,11 @@ def deal_mcar(df):
     else:
         Xy_incomplete = df.values
         # mean
-        Xy_filled_mean = Imputer(missing_values=np.nan, strategy='mean').fit_transform(Xy_incomplete)
+        Xy_filled_mean = SimpleImputer(missing_values=np.nan, strategy='mean').fit_transform(Xy_incomplete)
         score_mean = compute_imputation_score(Xy_filled_mean)
         print("Imputation score of mean is {}".format(score_mean))
         # mode
-        Xy_filled_mode = Imputer(missing_values=np.nan, strategy='most_frequent').fit_transform(Xy_incomplete)
+        Xy_filled_mode = SimpleImputer(missing_values=np.nan, strategy='most_frequent').fit_transform(Xy_incomplete)
         score_mode = compute_imputation_score(Xy_filled_mode)
         print("Imputation score of mode is {}".format(score_mode))
         # knn
@@ -869,11 +869,11 @@ def clean_missing(df,features):
     if ans == 'y':
         if recommend == 'mean':
             print("Applying mean imputation ...")
-            Xy_filled = Imputer(missing_values=np.nan, strategy='mean').fit_transform(df_preprocessed.values)
+            Xy_filled = SimpleImputer(missing_values=np.nan, strategy='mean').fit_transform(df_preprocessed.values)
             print("Missing values cleaned!")
         elif recommend == 'mode':
             print("Applying mode imputation ...")
-            Xy_filled = Imputer(missing_values=np.nan, strategy='most_frequent').fit_transform(df_preprocessed.values)
+            Xy_filled = SimpleImputer(missing_values=np.nan, strategy='most_frequent').fit_transform(df_preprocessed.values)
             print("Missing values cleaned!")
         elif recommend == 'knn':
             print("Applying knn imputation ...")
@@ -901,10 +901,10 @@ def clean_missing(df,features):
         print("")
         if ans == 'a':
             print("Applying mean imputation ...")
-            Xy_filled = Imputer(missing_values=np.nan, strategy='mean').fit_transform(df_preprocessed.values)
+            Xy_filled = SimpleImputer(missing_values=np.nan, strategy='mean').fit_transform(df_preprocessed.values)
         elif ans == 'b':
             print("Applying mode imputation ...")
-            Xy_filled = Imputer(missing_values=np.nan, strategy='most_frequent').fit_transform(df_preprocessed.values)
+            Xy_filled = SimpleImputer(missing_values=np.nan, strategy='most_frequent').fit_transform(df_preprocessed.values)
         elif ans == 'c':
             print("Applying knn imputation ...")
             with NoStdStreams():
@@ -919,7 +919,7 @@ def clean_missing(df,features):
                 Xy_filled = IterativeImputer().fit_transform(df_preprocessed.values)
         else:
             print("Applying default method mean imputation ...")
-            Xy_filled = Imputer(missing_values=np.nan, strategy='mean').fit_transform(df_preprocessed.values)
+            Xy_filled = SimpleImputer(missing_values=np.nan, strategy='mean').fit_transform(df_preprocessed.values)
             
         print("Missing values cleaned!")
     return features_new, Xy_filled
@@ -1049,7 +1049,7 @@ def predict_best_anomaly_algorithm(X, y):
     mf.shape
     
     # load meta learner
-    metalearner = joblib.load(urlopen("https://github.com/Ji-Zhang/datacleanbot/blob/master/datacleanbot/metalearner_rf.pkl?raw=true"))
+    metalearner = joblib.load(urlopen("https://github.com/Ji-Zhang/datacleanbot/blob/master/process/AutomaticOutlierDetection/metalearner_rf.pkl?raw=true"))
     best_anomaly_algorithm = metalearner.predict(mf)
     if best_anomaly_algorithm[0] == 0:
         print("The recommended approach is isolation forest.")
