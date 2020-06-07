@@ -36,7 +36,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.externals import joblib
+import joblib
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import LocalOutlierFactor
