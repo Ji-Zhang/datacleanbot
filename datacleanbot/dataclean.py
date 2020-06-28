@@ -36,15 +36,15 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
-import joblib
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import LocalOutlierFactor
 from sklearn.ensemble import IsolationForest
 from sklearn import svm
+from sklearn.model_selection import GridSearchCV
 
 from pandas.plotting import parallel_coordinates
-
+from ast import literal_eval
 from urllib.request import urlopen
 
 
@@ -1033,6 +1033,24 @@ def compute_metafeatures(X, y):
         
     return metafeatures
 
+def train_metalearner():
+    """Train metalearner"""
+    df_recommend = pd.read_csv('https://raw.githubusercontent.com/Ji-Zhang/datacleanbot/master/process/AutomaticOutlierDetection/metalearner.csv')
+    df_recommend['metafeatures'] = df_recommend['metafeatures'].apply(literal_eval)
+    
+    # Random forest meta-learner
+    X = np.asarray(df_recommend['metafeatures'].tolist())
+    y = df_recommend.target
+    
+    # Create dictionary for hyperparamters
+    param_grid_rf = {'n_estimators': [1,10,20,30,40,50,60,70,80,90,100],
+                  'max_features': [0.01,0.25,0.50,0.75,1.0]}
+
+    grid_search_rf = GridSearchCV(RandomForestClassifier(), param_grid_rf, cv=5, n_jobs=-1)
+    grid_search_rf.fit(X, y)
+    
+    return grid_search_rf
+
 def predict_best_anomaly_algorithm(X, y):
     """Predicts best anomaly detection algorithm.
 
@@ -1049,7 +1067,7 @@ def predict_best_anomaly_algorithm(X, y):
     mf.shape
     
     # load meta learner
-    metalearner = joblib.load(urlopen("https://github.com/Ji-Zhang/datacleanbot/blob/master/process/AutomaticOutlierDetection/metalearner_rf.pkl?raw=true"))
+    metalearner = train_metalearner()
     best_anomaly_algorithm = metalearner.predict(mf)
     if best_anomaly_algorithm[0] == 0:
         print("The recommended approach is isolation forest.")
