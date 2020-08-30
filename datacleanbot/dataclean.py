@@ -975,16 +975,16 @@ def compute_clustering_metafeatures(X):
 
     The following 3 clustering meta features are adopted:
     Silhouette Coefficient;
-    Calinski_Harabaz Index;
+    Calinski_Harabasz Index;
     Davies_Bouldin Index.
     """
     X = SimpleImputer(missing_values=np.nan, strategy='mean').fit_transform(X)
     kmeans_model = KMeans(n_clusters=2, random_state=1).fit(X)
     labels = kmeans_model.labels_
     silhouette_score = metrics.silhouette_score(X, labels, metric='euclidean')
-    calinski_harabaz_score = metrics.calinski_harabaz_score(X, labels)
+    calinski_harabasz_score = metrics.calinski_harabasz_score(X, labels)
     davies_bouldin_score = metrics.davies_bouldin_score(X, labels)
-    return silhouette_score, calinski_harabaz_score, davies_bouldin_score
+    return silhouette_score, calinski_harabasz_score, davies_bouldin_score
 
 def pipeline(X, y, estimator):
 #     if scipy.sparse.issparse(X) == True: # Check if X is sparse array
@@ -1021,7 +1021,7 @@ def compute_metafeatures(X, y):
 #         print("classification")
         metafeatures_clf = {}
         # compute clustering performance metafeatures
-        metafeatures_clf['silhouette'], metafeatures_clf['calinski_harabaz'], metafeatures_clf['davies_bouldin'] = compute_clustering_metafeatures(X)
+        metafeatures_clf['silhouette'], metafeatures_clf['calinski_harabasz'], metafeatures_clf['davies_bouldin'] = compute_clustering_metafeatures(X)
     
         # compute landmarking metafeatures
         metafeatures_clf['naive_bayes'], metafeatures_clf['naive_bayes_time'] = pipeline(X, y, GaussianNB()) 
